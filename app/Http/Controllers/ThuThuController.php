@@ -439,9 +439,14 @@ class ThuThuController extends Controller
         if ($hanhDong === 'xuLyYeuCau') {
             $trangThai = $request->input('trangThai', '');
             $maYeuCau = (int)$request->input('maYeuCauMuon', 0);
+            $lyDoTuChoi = trim($request->input('lyDoTuChoi', ''));
 
             if (!in_array($trangThai, ['daDuyet', 'tuChoi'], true) || !$maYeuCau) {
                 return response()->json(['loi' => 'Yêu cầu không hợp lệ.'], 422);
+            }
+
+            if ($trangThai === 'tuChoi' && ($lyDoTuChoi === '' || mb_strlen($lyDoTuChoi) > 500)) {
+                return response()->json(['loi' => 'Lý do từ chối phải có từ 1 đến 500 ký tự.'], 422);
             }
 
             try {
@@ -463,7 +468,7 @@ class ThuThuController extends Controller
                         'trangThai' => 'tuChoi',
                         'maNguoiXuLy' => $thuThu['id'],
                         'ngayXuLy' => now(),
-                        'lyDoTuChoi' => trim($request->input('lyDoTuChoi', '')),
+                        'lyDoTuChoi' => $lyDoTuChoi,
                     ]);
                     DB::commit();
                     return response()->json(['thanhCong' => true]);

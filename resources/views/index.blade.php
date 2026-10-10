@@ -22,7 +22,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
   <link rel="stylesheet" href="assets/tuongTac.css">
   <link rel="stylesheet" href="assets/quanLySach.css?v=20261002-1">
   <link rel="stylesheet" href="assets/thuThu.css?v=20261002-1">
-  <link rel="stylesheet" href="assets/yeuCauCho.css?v=20260921-2">
+  <link rel="stylesheet" href="assets/yeuCauCho.css?v=20261010-1">
   <link rel="stylesheet" href="assets/chonTaiLieu.css">
   <link rel="stylesheet" href="assets/quanTri.css?v=20261004-3">
   <link rel="stylesheet" href="assets/yeuCauDocGia.css?v=20260921-1">
@@ -380,6 +380,26 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
         <?php endif; ?>
       </section><?php endforeach; ?>
   </main>
+  <div id="hop-tu-choi-yeu-cau" class="hop-tu-choi-yeu-cau" aria-hidden="true" hidden>
+    <section class="noi-dung-tu-choi-yeu-cau" role="dialog" aria-modal="true" aria-labelledby="tieu-de-tu-choi-yeu-cau">
+      <div class="dau-tu-choi-yeu-cau">
+        <div>
+          <p class="eyebrow">XỬ LÝ YÊU CẦU</p>
+          <h2 id="tieu-de-tu-choi-yeu-cau">Từ chối yêu cầu mượn</h2>
+        </div>
+        <button class="dong-tu-choi-yeu-cau" type="button" aria-label="Đóng">×</button>
+      </div>
+      <p>Hãy ghi rõ lý do để độc giả có thể xem và điều chỉnh yêu cầu của mình.</p>
+      <form id="form-tu-choi-yeu-cau">
+        <label for="ly-do-tu-choi-yeu-cau">Lý do từ chối</label>
+        <textarea id="ly-do-tu-choi-yeu-cau" name="lyDoTuChoi" rows="4" maxlength="500" required placeholder="Ví dụ: Tài liệu hiện đã hết bản có thể mượn."></textarea>
+        <div class="chan-tu-choi-yeu-cau">
+          <button class="outline huy-tu-choi-yeu-cau" type="button">Hủy</button>
+          <button class="primary" type="submit">Xác nhận từ chối</button>
+        </div>
+      </form>
+    </section>
+  </div>
   <div id="hop-chon-tai-lieu" class="hop-chon-tai-lieu" aria-hidden="true">
     <div class="noi-dung-chon-tai-lieu">
       <div class="dau-chon-tai-lieu">
@@ -449,7 +469,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
   <script src="assets/docGiaApi.js?v=20261003-3"></script>
   <script src="assets/quanTriApi.js?v=20261004-3"></script>
   <script src="assets/quanTriHeThong.js?v=20261003-5"></script>
-  <script src="assets/thuThuApi.js?v=20261004-4"></script>
+  <script src="assets/thuThuApi.js?v=20261010-2"></script>
   <script src="assets/thuThuSach.js?v=20261002-4"></script>
   <script src="assets/thuThuSachThongKe.js?v=20261002-2"></script>
 </body>

@@ -20,6 +20,48 @@
             ...d
         })
     });
+    const hopTuChoi = document.querySelector('#hop-tu-choi-yeu-cau');
+    const formTuChoi = document.querySelector('#form-tu-choi-yeu-cau');
+    const oLyDoTuChoi = document.querySelector('#ly-do-tu-choi-yeu-cau');
+    let xuLyLyDoTuChoi = null;
+    const dongHopTuChoi = lyDo => {
+        if (!hopTuChoi) return;
+        hopTuChoi.classList.remove('mo');
+        hopTuChoi.hidden = true;
+        hopTuChoi.setAttribute('aria-hidden', 'true');
+        const xuLy = xuLyLyDoTuChoi;
+        xuLyLyDoTuChoi = null;
+        xuLy?.(lyDo);
+    };
+    const nhapLyDoTuChoi = () => {
+        if (!hopTuChoi || !formTuChoi || !oLyDoTuChoi) return Promise.resolve(null);
+        formTuChoi.reset();
+        hopTuChoi.hidden = false;
+        hopTuChoi.classList.add('mo');
+        hopTuChoi.setAttribute('aria-hidden', 'false');
+        oLyDoTuChoi.focus();
+        return new Promise(resolve => {
+            xuLyLyDoTuChoi = resolve;
+        });
+    };
+    formTuChoi?.addEventListener('submit', suKien => {
+        suKien.preventDefault();
+        const lyDo = oLyDoTuChoi.value.trim();
+        if (!lyDo) {
+            oLyDoTuChoi.setCustomValidity('Vui lòng nhập lý do từ chối.');
+            oLyDoTuChoi.reportValidity();
+            return;
+        }
+        dongHopTuChoi(lyDo);
+    });
+    oLyDoTuChoi?.addEventListener('input', () => oLyDoTuChoi.setCustomValidity(''));
+    document.querySelectorAll('.dong-tu-choi-yeu-cau,.huy-tu-choi-yeu-cau').forEach(nut => nut.addEventListener('click', () => dongHopTuChoi(null)));
+    hopTuChoi?.addEventListener('click', suKien => {
+        if (suKien.target === hopTuChoi) dongHopTuChoi(null);
+    });
+    document.addEventListener('keydown', suKien => {
+        if (suKien.key === 'Escape' && hopTuChoi?.classList.contains('mo')) dongHopTuChoi(null);
+    });
     const kiemTraYeuCau = yeuCau => {
         const theHopLe = yeuCau.trangThaiTaiKhoan === 'hoatDong' && yeuCau.trangThaiThe === 'hoatDong';
         const duSach = Number(yeuCau.soTaiLieuSanSang) === Number(yeuCau.soTaiLieu);
@@ -165,8 +207,8 @@
         b.onclick = async e => {
             const n = e.target.closest('.duyet-thu-thu,.tu-choi-thu-thu');
             if (!n) return;
-            const s = n.classList.contains('duyet-thu-thu') ? 'daDuyet' : 'tuChoi',
-                l = s === 'tuChoi' ? prompt('Lý do từ chối:', '') : '';
+            const s = n.classList.contains('duyet-thu-thu') ? 'daDuyet' : 'tuChoi';
+            const l = s === 'tuChoi' ? await nhapLyDoTuChoi() : '';
             if (l === null) return;
             try {
                 await p('xuLyYeuCau', {
@@ -191,7 +233,7 @@
             }).join('') || '<tr><td colspan="6">Không có yêu cầu chờ duyệt.</td></tr>';
         });
         document.querySelectorAll('.mo-danh-sach-yeu-cau').forEach(nut => nut.addEventListener('click', () => taiYeuCauDayDu()));
-        bangYeuCauDayDu.onclick = async e => { const nut = e.target.closest('.duyet-yeu-cau-day-du,.tu-choi-yeu-cau-day-du'); if (!nut || nut.disabled) return; const tuChoi = nut.classList.contains('tu-choi-yeu-cau-day-du'); const lyDo = tuChoi ? prompt('Lý do từ chối:', '') : ''; if (lyDo === null) return; try { await p('xuLyYeuCau', {maYeuCauMuon: nut.dataset.id, trangThai: tuChoi ? 'tuChoi' : 'daDuyet', lyDoTuChoi: lyDo}); await taiYeuCauDayDu(); window.hienThongBao?.('Đã xử lý yêu cầu.'); } catch (loi) { alert(loi.message); } };
+        bangYeuCauDayDu.onclick = async e => { const nut = e.target.closest('.duyet-yeu-cau-day-du,.tu-choi-yeu-cau-day-du'); if (!nut || nut.disabled) return; const tuChoi = nut.classList.contains('tu-choi-yeu-cau-day-du'); const lyDo = tuChoi ? await nhapLyDoTuChoi() : ''; if (lyDo === null) return; try { await p('xuLyYeuCau', {maYeuCauMuon: nut.dataset.id, trangThai: tuChoi ? 'tuChoi' : 'daDuyet', lyDoTuChoi: lyDo}); await taiYeuCauDayDu(); window.hienThongBao?.('Đã xử lý yêu cầu.'); } catch (loi) { alert(loi.message); } };
         taiYeuCauDayDu();
     }
     const r = document.querySelector('#du-lieu-doc-gia-thu-thu');

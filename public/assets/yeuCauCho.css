@@ -60,6 +60,92 @@
     display: flex
 }
 
+.hop-tu-choi-yeu-cau {
+    align-items: center;
+    background: rgba(25, 35, 32, .48);
+    display: none;
+    inset: 0;
+    justify-content: center;
+    padding: 24px;
+    position: fixed;
+    z-index: 40
+}
+
+.hop-tu-choi-yeu-cau.mo {
+    display: flex
+}
+
+.noi-dung-tu-choi-yeu-cau {
+    background: #fffdfa;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(24, 36, 32, .22);
+    max-width: 520px;
+    padding: 24px;
+    width: min(100%, 520px)
+}
+
+.dau-tu-choi-yeu-cau {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between
+}
+
+.dau-tu-choi-yeu-cau h2 {
+    color: #2e3b37;
+    font: 700 23px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 3px 0 0
+}
+
+.dong-tu-choi-yeu-cau {
+    background: transparent;
+    border: 0;
+    color: #62706a;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
+    padding: 5px
+}
+
+.noi-dung-tu-choi-yeu-cau > p {
+    color: #69736e;
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 14px 0
+}
+
+.noi-dung-tu-choi-yeu-cau label {
+    color: #53605a;
+    display: block;
+    font-size: 12px;
+    font-weight: 700
+}
+
+.noi-dung-tu-choi-yeu-cau textarea {
+    background: #fff;
+    border: 1px solid #d9e1dc;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #35413d;
+    font: 13px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin-top: 7px;
+    outline: 0;
+    padding: 10px;
+    resize: vertical;
+    width: 100%
+}
+
+.noi-dung-tu-choi-yeu-cau textarea:focus {
+    border-color: #d26440;
+    box-shadow: 0 0 0 3px rgba(210, 100, 64, .12)
+}
+
+.chan-tu-choi-yeu-cau {
+    display: flex;
+    gap: 9px;
+    justify-content: flex-end;
+    margin-top: 18px
+}
+
 .noi-dung-danh-sach-yeu-cau {
     background: #fffdfa;
     border-radius: 15px;

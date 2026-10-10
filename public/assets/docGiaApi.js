@@ -78,6 +78,8 @@
     const khung = document.querySelector('#book-grid');
     if (!khung) return;
     const ds = await goiApi('api/docGia.php?hanhDong=taiLieu');
+    const boDemSach = document.querySelector('#book-count');
+    if (boDemSach) boDemSach.textContent = `${ds.length} đầu sách`;
     khung.innerHTML = ds.map((x, i) => {
       const bia = x.anhBia
         ? `<div class="cover large co-anh"><img src="${anToan(x.anhBia)}" alt="Bìa ${anToan(x.tieuDe)}"><span>${anToan(x.ma)}</span></div>`
