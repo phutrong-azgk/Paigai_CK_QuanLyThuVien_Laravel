@@ -460,6 +460,26 @@ header {
     font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
 }
 
+.cover.co-anh {
+    background: #eef0ec;
+    overflow: hidden
+}
+
+.cover.co-anh img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%
+}
+
+.cover.co-anh span {
+    background: rgba(28, 42, 47, .74);
+    bottom: 0;
+    left: 0;
+    padding: 6px;
+    right: 0;
+    text-align: center
+}
+
 .orange {
     background: #d87042
 }

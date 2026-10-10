@@ -78,7 +78,12 @@
     const khung = document.querySelector('#book-grid');
     if (!khung) return;
     const ds = await goiApi('api/docGia.php?hanhDong=taiLieu');
-    khung.innerHTML = ds.map((x, i) => `<article class="book-card" tabindex="0" role="link" data-search="${anToan(`${x.tieuDe} ${x.nhaXuatBan || ''} ${x.danhMuc}`).toLowerCase()}" data-detail-url="chiTietTaiLieu.php?id=${encodeURIComponent(x.ma)}"><div class="cover large ${['blue','purple','green','orange'][i%4]}">◫<span>${anToan(x.ma)}</span></div><div class="book-card-body"><p>${anToan(x.danhMuc)}</p><h3>${anToan(x.tieuDe)}</h3><span>${anToan(x.nhaXuatBan || 'Chưa có nhà xuất bản')}</span><footer><b class="${x.soBan>0?'available':'unavailable'}">● ${x.soBan>0?`Còn ${x.soBan} cuốn`:'Đã hết sách'}</b><button class="detail-btn muon-ngay-api" type="button" data-id="${x.maTaiLieu}" ${x.soBan>0?'':'disabled'}>${x.soBan>0?'Mượn →':'Hết sách'}</button></footer></div></article>`).join('');
+    khung.innerHTML = ds.map((x, i) => {
+      const bia = x.anhBia
+        ? `<div class="cover large co-anh"><img src="${anToan(x.anhBia)}" alt="Bìa ${anToan(x.tieuDe)}"><span>${anToan(x.ma)}</span></div>`
+        : `<div class="cover large ${['blue','purple','green','orange'][i%4]}">◫<span>${anToan(x.ma)}</span></div>`;
+      return `<article class="book-card" tabindex="0" role="link" data-search="${anToan(`${x.tieuDe} ${x.nhaXuatBan || ''} ${x.danhMuc}`).toLowerCase()}" data-detail-url="chiTietTaiLieu.php?id=${encodeURIComponent(x.ma)}">${bia}<div class="book-card-body"><p>${anToan(x.danhMuc)}</p><h3>${anToan(x.tieuDe)}</h3><span>${anToan(x.nhaXuatBan || 'Chưa có nhà xuất bản')}</span><footer><b class="${x.soBan>0?'available':'unavailable'}">● ${x.soBan>0?`Còn ${x.soBan} cuốn`:'Đã hết sách'}</b><button class="detail-btn muon-ngay-api" type="button" data-id="${x.maTaiLieu}" ${x.soBan>0?'':'disabled'}>${x.soBan>0?'Mượn →':'Hết sách'}</button></footer></div></article>`;
+    }).join('');
     khung.onclick = async suKien => {
       const nutMuon = suKien.target.closest('.muon-ngay-api');
       if (nutMuon) {

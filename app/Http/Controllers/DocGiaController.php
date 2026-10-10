@@ -152,7 +152,7 @@ class DocGiaController extends Controller
             $taiLieu = DB::table('tailieu as tl')
                 ->leftJoin('khoa as k', 'k.maKhoa', '=', 'tl.maKhoa')
                 ->leftJoin('nhaxuatban as nxb', 'nxb.maNhaXuatBan', '=', 'tl.maNhaXuatBan')
-                ->select('tl.maTaiLieu', 'tl.ma', 'tl.tieuDe', 'k.ten as danhMuc', 'nxb.ten as nhaXuatBan', 'tl.soLuongCon as soBan')
+                ->select('tl.maTaiLieu', 'tl.ma', 'tl.tieuDe', 'tl.anhBia', 'k.ten as danhMuc', 'nxb.ten as nhaXuatBan', 'tl.soLuongCon as soBan')
                 ->orderBy('tl.tieuDe')
                 ->get();
             return response()->json(['duLieu' => $taiLieu]);
