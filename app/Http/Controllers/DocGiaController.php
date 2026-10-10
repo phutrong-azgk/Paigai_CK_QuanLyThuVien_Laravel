@@ -210,6 +210,24 @@ class DocGiaController extends Controller
             return response()->json(['duLieu' => $duLieu]);
         }
 
+        if ($hanhDong === 'yeuCauMuon' && $request->isMethod('GET')) {
+            $duLieu = DB::table('yeucaumuon as yc')
+                ->join('chitietyeucaumuon as ct', 'ct.maYeuCauMuon', '=', 'yc.maYeuCauMuon')
+                ->join('tailieu as tl', 'tl.maTaiLieu', '=', 'ct.maTaiLieu')
+                ->select(
+                    'yc.maYeuCauMuon',
+                    'yc.ngayYeuCau',
+                    DB::raw("GROUP_CONCAT(CONCAT(tl.ma, '|', tl.tieuDe) SEPARATOR '||') as taiLieu")
+                )
+                ->where('yc.maDocGia', $maDocGia)
+                ->where('yc.trangThai', 'choDuyet')
+                ->groupBy('yc.maYeuCauMuon', 'yc.ngayYeuCau')
+                ->orderByDesc('yc.ngayYeuCau')
+                ->get();
+
+            return response()->json(['duLieu' => $duLieu]);
+        }
+
         if ($hanhDong === 'yeuCauMuon' && $request->isMethod('POST')) {
             $maTaiLieuList = array_values(array_unique(array_filter(array_map('intval', (array)$request->input('maTaiLieu', [])))));
             if (empty($maTaiLieuList)) return response()->json(['loi' => 'Vui lòng chọn ít nhất một tài liệu.'], 422);

@@ -466,7 +466,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
   </div>
   <div id="hienThongBao" class="toast">Đã cập nhật thành công</div>
   <script src="assets/app.js?v=20261002-2"></script>
-  <script src="assets/docGiaApi.js?v=20261003-3"></script>
+  <script src="assets/docGiaApi.js?v=20261010-1"></script>
   <script src="assets/quanTriApi.js?v=20261004-3"></script>
   <script src="assets/quanTriHeThong.js?v=20261003-5"></script>
   <script src="assets/thuThuApi.js?v=20261010-2"></script>

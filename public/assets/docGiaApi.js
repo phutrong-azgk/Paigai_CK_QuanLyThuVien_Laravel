@@ -159,11 +159,16 @@
     const khung = document.querySelector('#du-lieu-yeu-cau-muon');
     if (!khung) return;
     const ds = await goiApi('api/docGia.php?hanhDong=yeuCauMuon');
-    khung.innerHTML = ds.map(x => `<article data-id="${x.maYeuCauMuon}"><div class="bia-yeu-cau-doc-gia blue">◉</div><div class="thong-tin-yeu-cau-doc-gia"><div><b>${anToan(x.taiLieu.split('|')[0])}</b><mark class="yellow">Chờ duyệt</mark></div><h2>${anToan(x.taiLieu.split('|')[1] || 'Yêu cầu mượn')}</h2><small>Gửi lúc ${dinhDangNgay(x.ngayYeuCau)}</small></div><div class="hanh-dong-yeu-cau-doc-gia"><button class="outline huy-yeu-cau-api">Hủy yêu cầu</button></div></article>`).join('');
+    khung.innerHTML = ds.map(x => {
+      const taiLieu = String(x.taiLieu || '').split('||').map(muc => muc.split('|'));
+      const ma = taiLieu.map(([maTaiLieu]) => maTaiLieu).filter(Boolean).join(', ');
+      const tieuDe = taiLieu.map(([, tieuDeTaiLieu]) => tieuDeTaiLieu).filter(Boolean).join(', ');
+      return `<article data-id="${x.maYeuCauMuon}"><div class="bia-yeu-cau-doc-gia blue">◉</div><div class="thong-tin-yeu-cau-doc-gia"><div><b>${anToan(ma)}</b><mark class="yellow">Chờ duyệt</mark></div><h2>${anToan(tieuDe || 'Yêu cầu mượn')}</h2><small>Gửi lúc ${dinhDangNgay(x.ngayYeuCau)}</small></div><div class="hanh-dong-yeu-cau-doc-gia"><button class="outline huy-yeu-cau-api">Hủy yêu cầu</button></div></article>`;
+    }).join('');
     document.querySelector('.trang-thai-rong-doc-gia').hidden = ds.length > 0;
     document.querySelectorAll('.huy-yeu-cau-api').forEach(b => b.onclick = async () => {
       const id = b.closest('article').dataset.id;
-      await fetch('api/docGia.php?hanhDong=huyYeuCau', {
+      const phanHoi = await fetch('api/docGia.php?hanhDong=huyYeuCauMuon', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -172,6 +177,7 @@
           maYeuCauMuon: id
         })
       });
+      if (!phanHoi.ok) throw new Error('Không thể hủy yêu cầu.');
       napYeuCau();
     });
   };
