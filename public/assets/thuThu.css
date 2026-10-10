@@ -1,0 +1,448 @@
+.librarian-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px
+}
+
+.librarian-metrics article {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    padding: 17px;
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 11px;
+    align-items: center
+}
+
+.metric-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font-size: 17px
+}
+
+.metric-icon.navy {
+    background: #e7eef2;
+    color: #385e73
+}
+
+.metric-icon.coral {
+    background: #fbe8df;
+    color: #d36946
+}
+
+.metric-icon.amber {
+    background: #fff1d4;
+    color: #b8852d
+}
+
+.metric-icon.mint {
+    background: #e2f1e9;
+    color: #428264
+}
+
+.librarian-metrics b {
+    font-size: 19px;
+    display: block
+}
+
+.librarian-metrics small,
+.librarian-metrics em {
+    font-size: 12px;
+    color: #838a87;
+    font-style: normal
+}
+
+.librarian-metrics em {
+    grid-column: 1/-1;
+    border-top: 1px solid var(--line);
+    padding-top: 9px
+}
+
+.librarian-dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 20px
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px
+}
+
+.quick-actions button {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    text-align: left;
+    padding: 14px;
+    cursor: pointer
+}
+
+.quick-actions i {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 29px;
+    border-radius: 7px;
+    background: #fbe9e2;
+    color: #d26440;
+    font-size: 18px;
+    font-style: normal
+}
+
+.quick-actions b,
+.quick-actions span {
+    display: block
+}
+
+.nut-duyet-yeu-cau,
+.nut-tu-choi-yeu-cau {
+    border-radius: 6px;
+    cursor: pointer;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin-right: 6px;
+    padding: 7px 10px
+}
+
+.nut-duyet-yeu-cau {
+    background: #e8f4ed;
+    border: 1px solid #c7e4d2;
+    color: #3f7a5d
+}
+
+.nut-tu-choi-yeu-cau {
+    background: #fff2ef;
+    border: 1px solid #f2cbc4;
+    color: #bd5d50
+}
+
+.nut-duyet-yeu-cau:disabled {
+    cursor: not-allowed;
+    opacity: .5
+}
+
+.quick-actions b {
+    font-size: 12px;
+    margin-top: 10px
+}
+
+.quick-actions span {
+    color: #8a908d;
+    font-size: 12px;
+    margin-top: 3px
+}
+
+.due-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+    padding: 12px 0
+}
+
+.due-date {
+    background: #f6f5f1;
+    border-radius: 6px;
+    padding: 5px 8px;
+    text-align: center;
+    color: #d26440;
+    font-weight: 700
+}
+
+.due-date small,
+.due-item small {
+    display: block;
+    font-size: 12px;
+    color: #8c918e;
+    font-weight: 400
+}
+
+.due-item div {
+    flex: 1
+}
+
+.due-item b {
+    font-size: 12px
+}
+
+.circulation-layout {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 20px
+}
+
+.circulation-form h2,
+.loan-ticket h2,
+.return-result h2 {
+    font: 700 20px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 0 0 15px
+}
+
+.o-nhap-lieu {
+    display: flex;
+    height: 44px;
+    align-items: center;
+    border: 1px solid #deded9;
+    border-radius: 7px;
+    padding-left: 12px;
+    gap: 8px;
+    margin: 0 0 18px
+}
+
+.o-nhap-lieu input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.o-nhap-lieu button {
+    height: 100%;
+    border: 0;
+    background: #253a48;
+    color: #fff;
+    padding: 0 14px;
+    border-radius: 0 6px 6px 0;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    cursor: pointer
+}
+
+.reader-preview,
+.return-book {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8f7f3;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 0 0 24px
+}
+
+.reader-preview .avatar {
+    width: 42px;
+    height: 42px
+}
+
+.reader-preview div:nth-child(2) {
+    flex: 1
+}
+
+.reader-preview b,
+.reader-preview span {
+    display: block
+}
+
+.reader-preview span,
+.reader-preview p,
+.return-book span,
+.return-book p {
+    font-size: 12px;
+    color: #848b88;
+    margin: 3px 0
+}
+
+.reader-preview p {
+    align-items: center;
+    display: flex;
+    gap: 8px
+}
+
+.return-book b,
+.return-book span {
+    display: block
+}
+
+.return-book span {
+    margin-top: 3px
+}
+
+.ticket-book {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 15px 0
+}
+
+.ticket-book i,
+.return-book i {
+    width: 34px;
+    height: 43px;
+    border-radius: 3px;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-style: normal
+}
+
+.ticket-book div {
+    flex: 1
+}
+
+.ticket-book b,
+.ticket-book span {
+    display: block
+}
+
+.ticket-book span {
+    font-size: 12px;
+    color: #848b88;
+    margin-top: 3px
+}
+
+.ticket-book button {
+    border: 0;
+    background: none;
+    color: #999;
+    font-size: 19px
+}
+
+.ticket-summary {
+    padding: 14px 0
+}
+
+.ticket-summary span {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 12px;
+    color: #7b827f
+}
+
+.ticket-summary b {
+    color: #293331
+}
+
+.full {
+    width: 100%
+}
+
+.return-layout .return-book {
+    margin-bottom: 15px
+}
+
+.condition-label {
+    display: block;
+    font-size: 12px;
+    color: #747b78
+}
+
+.condition-label select {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    border: 1px solid #deded9;
+    border-radius: 6px;
+    padding: 9px;
+    background: #fff;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.return-result {
+    align-self: start
+}
+
+.return-line {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding: 13px 0;
+    font-size: 12px;
+    color: #747b78
+}
+
+.return-line b {
+    color: #2d3532
+}
+
+.return-line.total {
+    font-size: 13px
+}
+
+.return-line.total b {
+    color: #d26440;
+    font-size: 16px
+}
+
+.ok-text {
+    color: #438065 !important
+}
+
+.fine-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px
+}
+
+.fine-stats article {
+    background: #253a48;
+    color: #fff;
+    border-radius: 10px;
+    padding: 18px
+}
+
+.fine-stats article:nth-child(2) {
+    background: #d87348
+}
+
+.fine-stats article:nth-child(3) {
+    background: #6d8c7a
+}
+
+.fine-stats span,
+.fine-stats small {
+    display: block;
+    font-size: 12px;
+    opacity: .8
+}
+
+.fine-stats b {
+    display: block;
+    font: 700 25px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 6px 0
+}
+
+@media(max-width:1050px) {
+    .librarian-metrics {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .librarian-dashboard-grid,
+    .circulation-layout {
+        grid-template-columns: 1fr
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr
+    }
+}
+
+@media(max-width:600px) {
+
+    .librarian-metrics,
+    .fine-stats {
+        grid-template-columns: 1fr
+    }
+
+    .circulation-form,
+    .loan-ticket,
+    .return-result {
+        padding: 18px
+    }
+
+    .reader-preview {
+        align-items: flex-start
+    }
+
+    .reader-preview .text-btn {
+        display: none
+    }
+}

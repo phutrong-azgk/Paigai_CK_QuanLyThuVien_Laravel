@@ -1,0 +1,205 @@
+.detail-header {
+    height: 76px;
+    padding: 0 7%;
+    border-bottom: 1px solid var(--line);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.detail-header .brand {
+    margin: 0
+}
+
+.back-link {
+    color: #d26440;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600
+}
+
+.detail-main {
+    margin: 0 auto;
+    padding: 36px 7%;
+    max-width: 1240px
+}
+
+.breadcrumb {
+    color: #919795;
+    font-size: 12px;
+    margin: 0 0 25px
+}
+
+.book-hero {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    padding: 38px;
+    display: flex;
+    gap: 39px
+}
+
+.cover.feature {
+    width: 190px;
+    height: 265px;
+    font-size: 70px;
+    border-radius: 7px
+}
+
+.cover.feature.co-anh {
+    background: #eef0ec;
+    overflow: hidden
+}
+
+.cover.feature.co-anh img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%
+}
+
+.cover.feature.co-anh span {
+    background: rgba(28, 42, 47, .74);
+    bottom: 0;
+    left: 0;
+    padding: 6px;
+    right: 0;
+    text-align: center
+}
+
+.book-overview {
+    max-width: 690px
+}
+
+.book-overview h1 {
+    font: 700 39px/1.12 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 0
+}
+
+.book-overview h2 {
+    font: 400 17px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    color: #727977;
+    margin: 7px 0 19px
+}
+
+.availability {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 7px 11px;
+    font-size: 12px;
+    font-weight: 600
+}
+
+.available-box {
+    background: #e5f3eb;
+    color: #438065
+}
+
+.unavailable-box {
+    background: #fde9e7;
+    color: #bf5d56
+}
+
+.description {
+    color: #69716e;
+    line-height: 1.7;
+    margin: 19px 0
+}
+
+.book-actions {
+    display: flex;
+    gap: 9px;
+    flex-wrap: wrap
+}
+
+.favorite {
+    border: 0;
+    background: none;
+    color: #d26440;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    cursor: pointer
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 20px
+}
+
+.detail-panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px
+}
+
+.detail-panel h2 {
+    font: 700 20px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 0 0 17px
+}
+
+.detail-panel p {
+    color: #737a77;
+    font-size: 12px;
+    line-height: 1.65
+}
+
+.detail-panel dl {
+    margin: 0
+}
+
+.detail-panel dl div {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding: 12px 0;
+    font-size: 12px
+}
+
+.detail-panel dt {
+    color: #8b918e
+}
+
+.detail-panel dd {
+    margin: 0;
+    font-weight: 600
+}
+
+.shelf {
+    color: #d26440 !important;
+    font-weight: 600
+}
+
+@media(max-width:700px) {
+    .detail-header {
+        padding: 0 20px
+    }
+
+    .detail-header .brand>span:last-child {
+        display: none
+    }
+
+    .detail-main {
+        padding: 25px 18px
+    }
+
+    .book-hero {
+        padding: 25px;
+        display: block
+    }
+
+    .cover.feature {
+        margin-bottom: 24px;
+        width: 145px;
+        height: 205px
+    }
+
+    .book-overview h1 {
+        font-size: 31px
+    }
+
+    .detail-grid {
+        grid-template-columns: 1fr
+    }
+}

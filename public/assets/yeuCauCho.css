@@ -1,0 +1,235 @@
+.pending-panel {
+    margin-top: 20px
+}
+
+.pending-count {
+    display: inline-grid;
+    place-items: center;
+    vertical-align: middle;
+    margin-left: 5px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fbe8df;
+    color: #c9603e;
+    font: 700 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.pending-table td {
+    white-space: nowrap
+}
+
+.duyet-yeu-cau,
+.tu-choi-yeu-cau {
+    border-radius: 5px;
+    padding: 6px 9px;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    cursor: pointer
+}
+
+.duyet-yeu-cau {
+    border: 1px solid #cfe8d9;
+    background: #e4f3ea;
+    color: #367b5b;
+    margin-right: 5px
+}
+
+.tu-choi-yeu-cau {
+    border: 1px solid #f1d2cd;
+    background: #fff4f1;
+    color: #bd5a4b
+}
+
+.duyet-yeu-cau.vo-hieu {
+    opacity: .55;
+    cursor: not-allowed
+}
+
+.hop-danh-sach-yeu-cau {
+    align-items: center;
+    background: rgba(25, 35, 32, .48);
+    display: none;
+    inset: 0;
+    justify-content: center;
+    padding: 24px;
+    position: fixed;
+    z-index: 30
+}
+
+.hop-danh-sach-yeu-cau.mo {
+    display: flex
+}
+
+.noi-dung-danh-sach-yeu-cau {
+    background: #fffdfa;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(24, 36, 32, .22);
+    max-height: min(760px, calc(100vh - 48px));
+    max-width: 1050px;
+    overflow: auto;
+    padding: 24px;
+    width: min(100%, 1050px)
+}
+
+.dau-danh-sach-yeu-cau {
+    align-items: flex-start;
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    margin-bottom: 20px
+}
+
+.dau-danh-sach-yeu-cau h2 {
+    color: #2e3b37;
+    font: 700 25px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 3px 0 5px
+}
+
+.dau-danh-sach-yeu-cau>div>p:last-child {
+    color: #77807c;
+    font-size: 12px;
+    margin: 0
+}
+
+.dong-danh-sach-yeu-cau {
+    background: transparent;
+    border: 0;
+    color: #62706a;
+    cursor: pointer;
+    font-size: 25px;
+    line-height: 1;
+    padding: 5px
+}
+
+.chan-danh-sach-yeu-cau .dong-danh-sach-yeu-cau {
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    padding: 7px 12px
+}
+
+.bo-loc-danh-sach-yeu-cau {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) 180px;
+    margin-bottom: 17px
+}
+
+.tim-danh-sach-yeu-cau {
+    align-items: center;
+    border: 1px solid #dce3dd;
+    border-radius: 8px;
+    display: flex;
+    gap: 8px;
+    padding: 0 11px
+}
+
+.tim-danh-sach-yeu-cau span {
+    color: #6f7c76;
+    font-size: 18px
+}
+
+.tim-danh-sach-yeu-cau input,
+.bo-loc-danh-sach-yeu-cau select {
+    background: #fff;
+    border: 0;
+    color: #3c4944;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    min-height: 39px;
+    outline: 0;
+    width: 100%
+}
+
+.bo-loc-danh-sach-yeu-cau select {
+    border: 1px solid #dce3dd;
+    border-radius: 8px;
+    padding: 0 10px
+}
+
+.bang-danh-sach-yeu-cau {
+    border: 1px solid #e3e8e4;
+    border-radius: 9px
+}
+
+.bang-danh-sach-yeu-cau td {
+    white-space: nowrap
+}
+
+.nut-xem-yeu-cau {
+    background: transparent;
+    border: 0;
+    color: #c9603e;
+    cursor: pointer;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.thao-tac-yeu-cau-day-du {
+    display: flex;
+    gap: 5px
+}
+
+.duyet-yeu-cau-day-du,
+.tu-choi-yeu-cau-day-du {
+    border-radius: 5px;
+    cursor: pointer;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    padding: 6px 9px;
+    white-space: nowrap
+}
+
+.duyet-yeu-cau-day-du {
+    background: #e4f3ea;
+    border: 1px solid #cfe8d9;
+    color: #367b5b
+}
+
+.tu-choi-yeu-cau-day-du {
+    background: #fff4f1;
+    border: 1px solid #f1d2cd;
+    color: #bd5a4b
+}
+
+.duyet-yeu-cau-day-du.vo-hieu {
+    cursor: not-allowed;
+    opacity: .55
+}
+
+.chan-danh-sach-yeu-cau {
+    align-items: center;
+    color: #77807c;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    margin-top: 16px
+}
+
+@media(max-width:600px) {
+    .pending-panel {
+        padding: 16px
+    }
+
+    .pending-panel .section-head {
+        gap: 8px
+    }
+
+    .pending-panel .section-head h2 {
+        font-size: 18px
+    }
+
+    .hop-danh-sach-yeu-cau {
+        align-items: flex-end;
+        padding: 0
+    }
+
+    .noi-dung-danh-sach-yeu-cau {
+        border-radius: 15px 15px 0 0;
+        max-height: 90vh;
+        padding: 18px
+    }
+
+    .dau-danh-sach-yeu-cau h2 {
+        font-size: 21px
+    }
+
+    .bo-loc-danh-sach-yeu-cau {
+        grid-template-columns: 1fr
+    }
+}

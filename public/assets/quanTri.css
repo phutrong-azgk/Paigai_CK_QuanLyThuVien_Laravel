@@ -1,0 +1,626 @@
+.quan-tri-chi-so {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 20px
+}
+
+.quan-tri-chi-so article {
+    align-items: flex-start;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    display: flex;
+    gap: 11px;
+    padding: 16px;
+    position: relative
+}
+
+.quan-tri-chi-so article>div {
+    min-width: 0
+}
+
+.quan-tri-chi-so i,
+.luoi-danh-muc-quan-tri i {
+    align-items: center;
+    border-radius: 9px;
+    display: flex;
+    font-style: normal;
+    height: 38px;
+    justify-content: center;
+    width: 38px
+}
+
+.xanh {
+    background: #e0eef1;
+    color: #397183
+}
+
+.tim {
+    background: #ede7f5;
+    color: #72619a
+}
+
+.cam {
+    background: #fff0d8;
+    color: #bd8031
+}
+
+.do {
+    background: #fbe7e4;
+    color: #b85850
+}
+
+.quan-tri-chi-so b {
+    color: #273531;
+    display: block;
+    font-size: 21px
+}
+
+.quan-tri-chi-so span {
+    color: #7c8581;
+    display: block;
+    font-size: 12px;
+    margin-top: 3px
+}
+
+.quan-tri-chi-so small {
+    color: #58906f;
+    display: block;
+    font-size: 12px;
+    line-height: 1.45;
+    margin-top: 7px
+}
+
+.quan-tri-luoi {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1.45fr 1fr
+}
+
+.nhat-ky-quan-tri {
+    display: grid;
+    gap: 14px;
+    margin-top: 18px
+}
+
+.nhat-ky-quan-tri>div,
+.lich-su-chinh-sach>div {
+    align-items: flex-start;
+    display: flex;
+    gap: 10px
+}
+
+.nhat-ky-quan-tri i,
+.lich-su-chinh-sach i {
+    align-items: center;
+    background: #e3f2e9;
+    border-radius: 50%;
+    color: #468264;
+    display: flex;
+    flex: 0 0 22px;
+    font-size: 12px;
+    font-style: normal;
+    height: 22px;
+    justify-content: center
+}
+
+.nhat-ky-quan-tri p,
+.lich-su-chinh-sach p {
+    color: #65706b;
+    font-size: 12px;
+    margin: 1px 0 0
+}
+
+.nhat-ky-quan-tri b,
+.lich-su-chinh-sach b {
+    color: #35413d
+}
+
+.nhat-ky-quan-tri small,
+.lich-su-chinh-sach span {
+    color: #929995;
+    display: block;
+    font-size: 12px;
+    margin-top: 4px
+}
+
+.canh-bao-quan-tri>div {
+    align-items: center;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 10px;
+    margin-top: 13px;
+    padding-top: 13px
+}
+
+.canh-bao-quan-tri>div span {
+    align-items: center;
+    background: #fff1d8;
+    border-radius: 50%;
+    color: #ae7627;
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+    height: 25px;
+    justify-content: center;
+    width: 25px
+}
+
+.canh-bao-quan-tri>div p {
+    color: #6d7672;
+    font-size: 12px;
+    margin: 0
+}
+
+.canh-bao-quan-tri>#danh-sach-canh-bao-quan-tri {
+    border-top: 0;
+    display: block;
+    margin-top: 0;
+    padding-top: 0
+}
+
+.canh-bao-quan-tri>#danh-sach-canh-bao-quan-tri>div {
+    align-items: center;
+    border-top: 1px solid var(--line);
+    display: flex;
+    gap: 11px;
+    margin-top: 13px;
+    padding-top: 13px
+}
+
+.canh-bao-quan-tri>#danh-sach-canh-bao-quan-tri>p {
+    color: #6d7672;
+    font-size: 12px;
+    margin: 15px 0 0
+}
+
+.canh-bao-quan-tri .outline {
+    margin-top: 17px
+}
+
+.quan-tri-bang {
+    overflow: hidden;
+    padding: 0
+}
+
+.thanh-cong-cu-quan-tri {
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 10px;
+    padding: 18px
+}
+
+.thanh-cong-cu-quan-tri label {
+    align-items: center;
+    border: 1px solid #dce3dd;
+    border-radius: 7px;
+    display: flex;
+    flex: 1;
+    gap: 8px;
+    padding: 0 10px
+}
+
+.thanh-cong-cu-quan-tri label span {
+    color: #7d8581;
+    font-size: 17px
+}
+
+.thanh-cong-cu-quan-tri input,
+.thanh-cong-cu-quan-tri select {
+    background: #fff;
+    border: 0;
+    color: #59635f;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    height: 38px;
+    outline: 0
+}
+
+.thanh-cong-cu-quan-tri input {
+    width: 100%
+}
+
+.thanh-cong-cu-quan-tri select {
+    border: 1px solid #dce3dd;
+    border-radius: 7px;
+    padding: 0 8px
+}
+
+.tieu-de-bang-quan-tri {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 18px 8px
+}
+
+.tieu-de-bang-quan-tri b {
+    font-size: 13px
+}
+
+.tieu-de-bang-quan-tri span {
+    color: #858d89;
+    font-size: 12px
+}
+
+.quan-tri-bang .table-panel {
+    padding: 0 8px
+}
+
+.quan-tri-bang td {
+    white-space: nowrap
+}
+
+.vai-tro {
+    background: #eef0f4;
+    color: #5d6872
+}
+
+.vai-tro.quan-tri {
+    background: #eee7f7;
+    color: #735a9d
+}
+
+.vai-tro.thu-thu {
+    background: #e1eff1;
+    color: #3d7380
+}
+
+.vai-tro.doc-gia {
+    background: #fdf0dd;
+    color: #a87125
+}
+
+.nut-bang-quan-tri {
+    background: transparent;
+    border: 0;
+    color: #c9603e;
+    cursor: pointer;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.hop-tai-khoan-quan-tri {
+    align-items: center;
+    background: rgba(35, 45, 40, .42);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    opacity: 0;
+    padding: 20px;
+    pointer-events: none;
+    position: fixed;
+    transition: opacity .18s ease;
+    z-index: 20
+}
+
+.hop-tai-khoan-quan-tri.mo {
+    opacity: 1;
+    pointer-events: auto
+}
+
+.noi-dung-tai-khoan-quan-tri {
+    background: #fff;
+    border-radius: 13px;
+    box-shadow: 0 18px 52px rgba(29, 42, 35, .2);
+    max-width: 520px;
+    padding: 24px;
+    width: 100%
+}
+
+.dau-hop-tai-khoan {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between
+}
+
+.dau-hop-tai-khoan h2 {
+    color: #2d3935;
+    font: 700 24px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 4px 0 0
+}
+
+.dong-hop-tai-khoan {
+    background: transparent;
+    border: 0;
+    color: #7c8581;
+    cursor: pointer;
+    font-size: 26px;
+    line-height: 1
+}
+
+#mo-ta-hop-tai-khoan {
+    color: #6b7570;
+    font-size: 12px;
+    line-height: 1.65;
+    margin: 15px 0 18px
+}
+
+.luoi-truong-tai-khoan {
+    display: grid;
+    gap: 13px;
+    grid-template-columns: 1fr 1fr
+}
+
+.luoi-truong-tai-khoan label.rong {
+    grid-column: span 2
+}
+
+.noi-dung-tai-khoan-quan-tri label {
+    color: #66716c;
+    display: block;
+    font-size: 12px;
+    font-weight: 600
+}
+
+.noi-dung-tai-khoan-quan-tri input,
+.noi-dung-tai-khoan-quan-tri select {
+    background: #fff;
+    border: 1px solid #d9e1dc;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #35413d;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin-top: 6px;
+    outline: 0;
+    padding: 10px;
+    width: 100%
+}
+
+#truong-mat-khau {
+    margin-top: 13px
+}
+
+.loi-tai-khoan-quan-tri {
+    background: #fff0ef;
+    border-radius: 6px;
+    color: #bd554c;
+    font-size: 12px;
+    margin: 14px 0 0;
+    padding: 9px 10px
+}
+
+.chan-hop-tai-khoan {
+    display: flex;
+    gap: 9px;
+    justify-content: flex-end;
+    margin-top: 20px
+}
+
+.chan-hop-tai-khoan .outline {
+    padding: 10px 15px
+}
+
+.dau-trang-quan-tri {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 18px
+}
+
+.dau-trang-quan-tri p {
+    color: #737c77;
+    font-size: 12px;
+    margin: 0
+}
+
+.luoi-danh-muc-quan-tri {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(2, 1fr)
+}
+
+.luoi-danh-muc-quan-tri article {
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 11px;
+    display: flex;
+    gap: 12px;
+    padding: 15px
+}
+
+.luoi-danh-muc-quan-tri b {
+    color: #35413d;
+    display: block;
+    font-size: 13px
+}
+
+.luoi-danh-muc-quan-tri span {
+    color: #8a928e;
+    display: block;
+    font-size: 12px;
+    margin-top: 4px
+}
+
+.luoi-danh-muc-quan-tri button {
+    background: transparent;
+    border: 0;
+    color: #7e8883;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: auto
+}
+
+.luoi-danh-muc-quan-tri button + button {
+    margin-left: 2px
+}
+
+.luoi-danh-muc-quan-tri .sua-danh-muc,
+.luoi-danh-muc-quan-tri .xoa-danh-muc {
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.luoi-danh-muc-quan-tri .xoa-danh-muc {
+    color: #b85850
+}
+
+.chinh-sach-quan-tri {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1.45fr 1fr
+}
+
+.luoi-truong-chinh-sach {
+    display: grid;
+    gap: 13px;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 18px 0
+}
+
+.luoi-truong-chinh-sach label {
+    color: #6f7874;
+    font-size: 12px;
+    font-weight: 600
+}
+
+.luoi-truong-chinh-sach input {
+    border: 1px solid #dce2dd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #34413c;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin-top: 6px;
+    outline: 0;
+    padding: 10px;
+    width: 100%
+}
+
+.luoi-truong-chinh-sach select {
+    background: #fff;
+    border: 1px solid #dce2dd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: #34413c;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin-top: 6px;
+    outline: 0;
+    padding: 10px;
+    width: 100%
+}
+
+.khung-phat-hu-hong {
+    border-top: 1px solid var(--line);
+    margin: 22px 0 18px;
+    padding-top: 18px
+}
+
+.khung-phat-hu-hong h3 {
+    color: #35413d;
+    font-size: 17px;
+    margin: 4px 0
+}
+
+.khung-phat-hu-hong p:not(.eyebrow) {
+    color: #7a8580;
+    font-size: 12px;
+    margin: 0
+}
+
+.khung-phat-hu-hong .luoi-truong-chinh-sach {
+    margin-bottom: 0
+}
+
+.form-doi-mat-khau {
+    max-width: 720px
+}
+
+.form-doi-mat-khau .section-head p:not(.eyebrow) {
+    color: #7a8580;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 7px 0 0
+}
+
+.lich-su-chinh-sach .the-lich-su-chinh-sach {
+    align-items: center;
+    background: #fbfcfa;
+    border: 1px solid #e4e9e5;
+    border-radius: 10px;
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    margin-top: 10px;
+    padding: 12px
+}
+
+#danh-sach-chinh-sach {
+    display: block;
+    margin-top: 16px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-color: #b9c7be transparent;
+    scrollbar-width: thin
+}
+
+#danh-sach-chinh-sach::-webkit-scrollbar {
+    width: 7px
+}
+
+#danh-sach-chinh-sach::-webkit-scrollbar-thumb {
+    background: #b9c7be;
+    border-radius: 10px
+}
+
+.lich-su-chinh-sach .the-lich-su-chinh-sach:first-child {
+    margin-top: 16px
+}
+
+.the-lich-su-chinh-sach small {
+    color: #83908a;
+    font-size: 11px;
+    line-height: 1.55;
+    text-align: right
+}
+
+@media(max-width:1000px) {
+    .quan-tri-chi-so {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .quan-tri-luoi,
+    .chinh-sach-quan-tri {
+        grid-template-columns: 1fr
+    }
+}
+
+@media(max-width:600px) {
+
+    .quan-tri-chi-so,
+    .luoi-danh-muc-quan-tri,
+    .luoi-truong-chinh-sach {
+        grid-template-columns: 1fr
+    }
+
+    .thanh-cong-cu-quan-tri {
+        flex-wrap: wrap
+    }
+
+    .thanh-cong-cu-quan-tri label {
+        flex-basis: 100%
+    }
+
+    .dau-trang-quan-tri {
+        align-items: flex-start;
+        gap: 10px
+    }
+
+    .dau-trang-quan-tri .primary {
+        white-space: nowrap
+    }
+
+    .tieu-de-bang-quan-tri {
+        display: block
+    }
+
+    .tieu-de-bang-quan-tri span {
+        display: block;
+        margin-top: 4px
+    }
+
+    .luoi-truong-tai-khoan {
+        grid-template-columns: 1fr
+    }
+
+    .luoi-truong-tai-khoan label.rong {
+        grid-column: auto
+    }
+}

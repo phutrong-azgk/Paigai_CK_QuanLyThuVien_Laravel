@@ -1,0 +1,253 @@
+.logout {
+    border: 0;
+    background: none;
+    margin-left: auto;
+    color: #aaa;
+    font-size: 18px;
+    text-decoration: none
+}
+
+.login-body {
+    background: #fff
+}
+
+.login-wrap {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr
+}
+
+.login-story {
+    position: relative;
+    overflow: hidden;
+    background: #e9ece7;
+    padding: 42px 9%;
+    display: flex;
+    flex-direction: column
+}
+
+.login-story .brand {
+    margin: 0
+}
+
+.story-copy {
+    margin: auto 0 95px
+}
+
+.story-copy h1 {
+    font: 700 48px/1.12 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 0 0 15px
+}
+
+.story-copy h1 em {
+    color: #d96441;
+    font-style: normal
+}
+
+.story-copy>p:last-child {
+    max-width: 390px;
+    color: #65706c;
+    line-height: 1.7
+}
+
+.login-art {
+    position: absolute;
+    right: 12%;
+    bottom: 0;
+    width: 350px;
+    height: 225px
+}
+
+.login-art .sun {
+    right: 42px;
+    top: -15px
+}
+
+.login-art .b1 {
+    right: 145px
+}
+
+.login-art .b2 {
+    right: 79px
+}
+
+.login-art .b3 {
+    right: 14px
+}
+
+.login-art .plant {
+    right: 224px
+}
+
+.login-form-side {
+    display: grid;
+    place-items: center;
+    padding: 38px
+}
+
+.login-card {
+    width: min(400px, 100%)
+}
+
+.login-card h2 {
+    font: 700 30px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin: 0 0 8px
+}
+
+.form-intro {
+    color: #7d8481;
+    line-height: 1.55;
+    margin: 0 0 27px
+}
+
+.login-card>label {
+    display: block;
+    color: #5d6662;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    margin-bottom: 17px
+}
+
+.login-card input:not([type=checkbox]) {
+    display: block;
+    width: 100%;
+    border: 1px solid #deded9;
+    border-radius: 7px;
+    padding: 12px;
+    margin-top: 7px;
+    font: 13px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    outline: none
+}
+
+.login-card input:focus {
+    border-color: #d97655;
+    box-shadow: 0 0 0 3px #fbe8e1
+}
+
+.password-wrap {
+    position: relative
+}
+
+.password-wrap input {
+    padding-right: 38px !important
+}
+
+.password-wrap button {
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    border: 0;
+    background: none;
+    color: #9a9f9d;
+    cursor: pointer
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: -2px 0 23px
+}
+
+.login-options a {
+    color: #d26440;
+    font-size: 12px;
+    text-decoration: none
+}
+
+.remember {
+    font-size: 12px;
+    color: #717875 !important;
+    display: flex !important;
+    gap: 5px;
+    align-items: center;
+    margin: 0 !important
+}
+
+.remember input {
+    margin: 0
+}
+
+.login-submit {
+    width: 100%;
+    font-size: 13px;
+    padding: 13px
+}
+
+.demo-accounts {
+    margin-top: 28px;
+    padding: 15px;
+    background: #f8f7f3;
+    border-radius: 9px
+}
+
+.demo-accounts>b {
+    font-size: 12px;
+    color: #626a67;
+    display: block;
+    margin-bottom: 7px
+}
+
+.demo-account {
+    width: 100%;
+    text-align: left;
+    border: 0;
+    background: transparent;
+    padding: 6px 0;
+    color: #7a817e;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    cursor: pointer
+}
+
+.demo-account:hover {
+    color: #d26440
+}
+
+.demo-account span {
+    display: inline-block;
+    width: 68px;
+    color: #d26440;
+    font-weight: bold
+}
+
+.login-error {
+    border-radius: 6px;
+    background: #fce9e6;
+    color: #b6533d;
+    padding: 10px 12px;
+    font-size: 12px;
+    margin-bottom: 17px
+}
+
+.account-created{border-radius:6px;background:#e5f3eb;color:#387358;padding:10px 12px;font-size:12px;line-height:1.6;margin-bottom:17px}.password-note{font-size:12px;line-height:1.5;color:#737a77;margin:0 0 20px}.login-card select{display:block;width:100%;border:1px solid #deded9;border-radius:7px;padding:12px;margin-top:7px;font:13px 'Merriweather', 'Segoe UI', Arial, sans-serif;background:#fff;color:#4f5754}.login-footer{text-align:center;color:#757c79;font-size:12px;margin:15px 0 0}.login-footer a{color:#d26440;text-decoration:none;font-weight:600}
+
+@media(max-width:700px) {
+    .login-wrap {
+        grid-template-columns: 1fr
+    }
+
+    .login-story {
+        min-height: 270px;
+        padding: 28px
+    }
+
+    .story-copy {
+        margin: auto 0 0
+    }
+
+    .story-copy h1 {
+        font-size: 34px
+    }
+
+    .login-art {
+        display: none
+    }
+
+    .login-form-side {
+        padding: 37px 26px
+    }
+
+    .login-story .brand {
+        margin: 0
+    }
+}

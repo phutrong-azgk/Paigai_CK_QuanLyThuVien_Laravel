@@ -1,0 +1,366 @@
+.inventory-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px
+}
+
+.inventory-stats article {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    border: 1px solid var(--line);
+    background: #fff;
+    border-radius: 11px;
+    padding: 16px
+}
+
+.inventory-icon {
+    width: 37px;
+    height: 37px;
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    font-size: 17px
+}
+
+.blue-soft {
+    background: #e6eff5;
+    color: #477b98
+}
+
+.green-soft {
+    background: #e3f2e9;
+    color: #418264
+}
+
+.orange-soft {
+    background: #fbe8df;
+    color: #cb6746
+}
+
+.red-soft {
+    background: #fbe5e3;
+    color: #bf5d56
+}
+
+.inventory-stats b {
+    font-size: 21px;
+    display: block
+}
+
+.inventory-stats small {
+    font-size: 12px;
+    color: #858b88
+}
+
+.inventory-panel {
+    padding: 0;
+    overflow: hidden
+}
+
+.inventory-toolbar {
+    padding: 20px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    gap: 10px
+}
+
+.inventory-search {
+    height: 39px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #deded9;
+    border-radius: 7px;
+    padding: 0 11px;
+    color: #838a87
+}
+
+.inventory-search input {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.inventory-filter {
+    border: 1px solid #deded9;
+    border-radius: 7px;
+    padding: 0 8px;
+    background: #fff;
+    color: #646c69;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.inventory-caption {
+    padding: 16px 20px 9px;
+    display: flex;
+    justify-content: space-between
+}
+
+.inventory-caption b {
+    font: 600 14px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.inventory-caption span {
+    font-size: 12px;
+    color: #878d8a
+}
+
+.inventory-table {
+    padding: 0 8px
+}
+
+.inventory-table td {
+    white-space: nowrap
+}
+
+.table-book {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px
+}
+
+.table-book i {
+    display: grid;
+    place-items: center;
+    width: 29px;
+    height: 38px;
+    border-radius: 3px;
+    color: white;
+    font-style: normal;
+    font: 16px 'Merriweather', 'Segoe UI', Arial, serif
+}
+
+.table-book img {
+    width: 29px;
+    height: 38px;
+    border-radius: 3px;
+    object-fit: cover;
+    background: #eef0ed
+}
+
+.table-book b,
+.table-book span {
+    display: block
+}
+
+.table-book span,
+.inventory-table td span {
+    font-size: 12px;
+    color: #8a908d;
+    margin-top: 3px
+}
+
+.table-action {
+    border: 0;
+    background: none;
+    color: #d26440;
+    font: 600 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    cursor: pointer;
+    margin-right: 7px
+}
+
+.truong-nxb {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+.truong-nxb select {
+    flex: 1
+}
+
+.truong-nxb button {
+    flex: none;
+    white-space: nowrap
+}
+
+.nxb-panel .inventory-table td {
+    white-space: normal
+}
+
+.o-loc-tom-tat {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px
+}
+
+#hop-tom-tat-thu-thu .noi-dung-tai-khoan-quan-tri {
+    max-width: 760px
+}
+
+.o-loc-tom-tat input,
+.o-loc-tom-tat select,
+.truong-tom-tat textarea {
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    box-sizing: border-box;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif;
+    padding: 10px;
+    width: 100%
+}
+
+.o-loc-tom-tat input {
+    flex: 1
+}
+
+.o-loc-tom-tat select {
+    max-width: 180px
+}
+
+.danh-sach-sach-tom-tat {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    height: 260px;
+    overflow-y: auto
+}
+
+.muc-sach-tom-tat {
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    color: #31403b;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    font: inherit;
+    padding: 13px 14px;
+    text-align: left;
+    width: 100%
+}
+
+.muc-sach-tom-tat:last-child {
+    border-bottom: 0
+}
+
+.muc-sach-tom-tat:hover {
+    background: #f8f5ef
+}
+
+.muc-sach-tom-tat.duoc-chon {
+    background: #eaf4ee;
+    box-shadow: inset 4px 0 #5a9275
+}
+
+.danh-sach-sach-tom-tat b,
+.danh-sach-sach-tom-tat small {
+    display: block
+}
+
+.danh-sach-sach-tom-tat small {
+    color: #858b88;
+    margin-top: 3px
+}
+
+.danh-sach-sach-tom-tat p {
+    padding: 10px
+}
+
+.truong-tom-tat {
+    display: block
+}
+
+.truong-tom-tat textarea {
+    display: block;
+    margin-top: 6px;
+    resize: vertical
+}
+
+.red-mark {
+    background: #fde9e7;
+    color: #bf5d56
+}
+
+.inventory-footer {
+    border-top: 1px solid var(--line);
+    padding: 13px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #858b88;
+    font-size: 12px
+}
+
+.nut-phan-trang {
+    align-items: center;
+    display: flex;
+    gap: 8px
+}
+
+.nut-phan-trang button {
+    font-size: 12px;
+    padding: 7px 10px
+}
+
+.nut-phan-trang button:disabled {
+    cursor: not-allowed;
+    opacity: .45
+}
+
+.page-button {
+    border: 1px solid #e0e0db;
+    background: #fff;
+    border-radius: 5px;
+    width: 27px;
+    height: 25px;
+    color: #6e7572;
+    margin-left: 3px;
+    font: 12px 'Merriweather', 'Segoe UI', Arial, sans-serif
+}
+
+.page-button.active {
+    background: #253a48;
+    color: #fff;
+    border-color: #253a48
+}
+
+@media(max-width:1000px) {
+    .inventory-stats {
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    .inventory-toolbar {
+        flex-wrap: wrap
+    }
+
+    .inventory-search {
+        min-width: 100%
+    }
+}
+
+@media(max-width:600px) {
+    .inventory-stats {
+        grid-template-columns: 1fr
+    }
+
+    .inventory-toolbar {
+        padding: 15px
+    }
+
+    .inventory-filter {
+        height: 38px;
+        flex: 1
+    }
+
+    .inventory-caption {
+        display: block
+    }
+
+    .inventory-caption span {
+        display: block;
+        margin-top: 5px
+    }
+
+    .inventory-footer {
+        padding: 13px
+    }
+
+    .inventory-footer>span {
+        display: none
+    }
+}

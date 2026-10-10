@@ -1,0 +1,32 @@
+/* Giữ phần minh họa ở cuối cột, còn nội dung giới thiệu luôn được căn giữa. */
+.login-story{
+  min-height:100svh;
+  padding:42px 9% 0;
+  display:grid;
+  grid-template-rows:auto minmax(280px,1fr) auto;
+}
+.story-copy{
+  width:min(520px,100%);
+  margin:0;
+  padding:48px 0;
+  align-self:center;
+  justify-self:center;
+  text-align:center;
+}
+.story-copy>p:last-child{margin-left:auto;margin-right:auto}
+.login-art{
+  position:relative;
+  right:auto;
+  bottom:auto;
+  justify-self:center;
+}
+.login-form-side{min-height:100svh}
+@media(max-width:700px){
+  .login-story{min-height:auto;padding:28px 28px 0;grid-template-rows:auto auto auto}
+  .story-copy{padding:55px 0 35px}
+  .login-art{display:block;width:250px;height:155px}
+  .login-art .sun{transform:scale(.72);transform-origin:top right}
+  .login-art .book-shape{transform:scale(.72);transform-origin:bottom right}
+  .login-art .plant{transform:scale(.72);transform-origin:bottom right}
+  .login-form-side{min-height:auto}
+}
