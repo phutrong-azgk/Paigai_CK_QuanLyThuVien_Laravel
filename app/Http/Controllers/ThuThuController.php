@@ -258,6 +258,15 @@ class ThuThuController extends Controller
                     throw new \Exception('Thẻ hoặc tài khoản độc giả không hoạt động.');
                 }
 
+                $coPhatChuaThanhToan = DB::table('phieuphat')
+                    ->where('maDocGia', $maDocGia)
+                    ->where('trangThai', 'chuaThanhToan')
+                    ->lockForUpdate()
+                    ->exists();
+                if ($coPhatChuaThanhToan) {
+                    throw new \Exception('Độc giả đang có khoản phạt chưa thanh toán.');
+                }
+
                 $chinhSach = DB::table('chinhsachmuon')
                     ->select('maChinhSach', 'soSachToiDa', 'soNgayMuon')
                     ->where('loaiDocGia', $docGia->loaiDocGia)
@@ -476,6 +485,15 @@ class ThuThuController extends Controller
 
                 if ($yeuCau->trangThai !== 'hoatDong' || $yeuCau->trangThaiThe !== 'hoatDong') {
                     throw new \Exception('Thẻ hoặc tài khoản độc giả đang không hoạt động.');
+                }
+
+                $coPhatChuaThanhToan = DB::table('phieuphat')
+                    ->where('maDocGia', $yeuCau->maDocGia)
+                    ->where('trangThai', 'chuaThanhToan')
+                    ->lockForUpdate()
+                    ->exists();
+                if ($coPhatChuaThanhToan) {
+                    throw new \Exception('Độc giả đang có khoản phạt chưa thanh toán.');
                 }
 
                 $chinhSach = DB::table('chinhsachmuon')

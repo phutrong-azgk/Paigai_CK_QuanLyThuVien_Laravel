@@ -33,7 +33,7 @@ class DocGiaController extends Controller
             $taiLieu = DB::table('tailieu as tl')
                 ->leftJoin('khoa as k', 'k.maKhoa', '=', 'tl.maKhoa')
                 ->leftJoin('nhaxuatban as nxb', 'nxb.maNhaXuatBan', '=', 'tl.maNhaXuatBan')
-                ->select('tl.maTaiLieu', 'tl.ma', 'tl.tieuDe', 'tl.namXuatBan', 'tl.anhBia', 'tl.tomTat', 'tl.soLuongCon as soBan', 'tl.duocMuon', 'k.ten as khoa', 'nxb.ten as nhaXuatBan')
+                ->select('tl.maTaiLieu', 'tl.ma', 'tl.tieuDe', 'tl.namXuatBan', 'tl.anhBia', 'tl.tomTat', 'tl.viTriKe', 'tl.soLuongCon as soBan', 'tl.duocMuon', 'k.ten as khoa', 'nxb.ten as nhaXuatBan')
                 ->where('tl.ma', $ma)
                 ->first();
 
@@ -234,6 +234,14 @@ class DocGiaController extends Controller
 
             $docGiaInfo = DB::table('hosodocgia')->where('maDocGia', $maDocGia)->first();
             if ($docGiaInfo->trangThaiThe !== 'hoatDong') return response()->json(['loi' => 'Thẻ thư viện của bạn đang bị khóa.'], 403);
+
+            $coPhatChuaThanhToan = DB::table('phieuphat')
+                ->where('maDocGia', $maDocGia)
+                ->where('trangThai', 'chuaThanhToan')
+                ->exists();
+            if ($coPhatChuaThanhToan) {
+                return response()->json(['loi' => 'Bạn đang có khoản phạt chưa thanh toán. Vui lòng hoàn tất thanh toán trước khi mượn tài liệu.'], 403);
+            }
 
             $chinhSach = DB::table('chinhsachmuon')
                 ->where('loaiDocGia', $docGiaInfo->loaiDocGia)
