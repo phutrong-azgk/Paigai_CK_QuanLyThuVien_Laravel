@@ -1,6 +1,20 @@
 const $$ = (s) => document.querySelectorAll(s),
     $ = s => document.querySelector(s);
 
+const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+if (csrfToken) {
+    const fetchGoc = window.fetch.bind(window);
+    window.fetch = (taiNguyen, tuyChon = {}) => {
+        const phuongThuc = (tuyChon.method || (taiNguyen instanceof Request ? taiNguyen.method : 'GET')).toUpperCase();
+        if (!['GET', 'HEAD', 'OPTIONS'].includes(phuongThuc)) {
+            const headers = new Headers(tuyChon.headers || (taiNguyen instanceof Request ? taiNguyen.headers : undefined));
+            headers.set('X-CSRF-TOKEN', csrfToken);
+            tuyChon = {...tuyChon, headers};
+        }
+        return fetchGoc(taiNguyen, tuyChon);
+    };
+}
+
 function hienThongBao(message) {
     const t = $('#hienThongBao');
     t.textContent = message;

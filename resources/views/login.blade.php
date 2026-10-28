@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Đăng nhập | LIBRA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +39,9 @@
                 <div id="tao-tai-khoan-thanh-cong" class="account-created" hidden>Tạo tài khoản thành công. Hãy đăng nhập bằng mã số và mật khẩu bạn vừa đặt.</div><label>Mã đăng nhập<input name="username" autocomplete="username" placeholder="Ví dụ: 22110456" required autofocus></label><label>Mật khẩu<div class="password-wrap"><input name="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required><button type="button" id="toggle-password">◉</button></div></label>
                 <div class="login-options"><label class="remember"><input type="checkbox"> Ghi nhớ đăng nhập</label><a href="#">Quên mật khẩu?</a></div><button class="primary login-submit" type="submit">Đăng nhập <span>→</span></button>
                 <p class="login-footer">Chưa có tài khoản? <a href="dangKy.php">Đăng ký độc giả</a></p>
-                <a href="dangNhapNhanh.php" class="login-quick">Đăng nhập nhanh</a>
+                @if(app()->environment('local'))
+                    <a href="dangNhapNhanh.php" class="login-quick">Đăng nhập nhanh</a>
+                @endif
             </form>
         </section>
     </main>
@@ -51,7 +54,8 @@
             const r = await fetch('api/dangNhap.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                 },
                 body: JSON.stringify({
                     username: f.username.value,

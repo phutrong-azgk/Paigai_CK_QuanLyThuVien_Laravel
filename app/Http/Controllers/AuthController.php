@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterReaderRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -28,14 +30,11 @@ class AuthController extends Controller
         return view('dangNhapNhanh');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $tenDangNhap = strtoupper(trim($request->input('username', '')));
-        $matKhau = (string)$request->input('password', '');
-
-        if (!$tenDangNhap || !$matKhau) {
-            return response()->json(['loi' => 'Vui lòng nhập mã đăng nhập và mật khẩu.'], 422);
-        }
+        $duLieu = $request->validated();
+        $tenDangNhap = $duLieu['username'];
+        $matKhau = $duLieu['password'];
 
         $nguoiDung = DB::table('nguoidung as nd')
             ->join('vaitro as vt', 'vt.maVaiTro', '=', 'nd.maVaiTro')
@@ -79,18 +78,15 @@ class AuthController extends Controller
         return response()->json(['thanhCong' => true, 'chuyenTrang' => 'index.php']);
     }
 
-    public function register(Request $request)
+    public function register(RegisterReaderRequest $request)
     {
-        $maSo = strtoupper(trim($request->input('code', '')));
-        $hoTen = trim($request->input('name', ''));
-        $email = trim($request->input('email', ''));
-        $dienThoai = trim($request->input('phone', ''));
-        $ngaySinh = $request->input('birth_date');
-        $matKhau = (string)$request->input('password', '');
-
-        if (!preg_match('/^[A-Z0-9]{5,16}$/', $maSo) || mb_strlen($hoTen) < 3 || !filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($matKhau) < 8) {
-            return response()->json(['loi' => 'Thông tin đăng ký chưa hợp lệ; mật khẩu cần ít nhất 8 ký tự.'], 422);
-        }
+        $duLieu = $request->validated();
+        $maSo = $duLieu['code'];
+        $hoTen = $duLieu['name'];
+        $email = $duLieu['email'];
+        $dienThoai = $duLieu['phone'];
+        $ngaySinh = $duLieu['birth_date'];
+        $matKhau = $duLieu['password'];
 
         try {
             DB::beginTransaction();
@@ -125,6 +121,8 @@ class AuthController extends Controller
 
     public function quickLogin(Request $request)
     {
+        abort_unless(app()->environment('local'), 404);
+
         $vaiTroChon = $request->input('vaiTro', '');
         $maVaiTroMap = ['docGia' => 'DOCGIA', 'thuThu' => 'THUTHU', 'quanTri' => 'ADMIN'];
         $maVaiTro = $maVaiTroMap[$vaiTroChon] ?? '';

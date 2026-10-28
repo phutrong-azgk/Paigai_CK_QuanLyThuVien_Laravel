@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Đăng ký | LIBRA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +35,7 @@
                 <p class="eyebrow">TẠO TÀI KHOẢN</p>
                 <h2>Đăng ký độc giả</h2>
                 <p class="form-intro">Điền thông tin hồ sơ để tạo thẻ thư viện trực tuyến.</p>
-                <div id="loi-dang-ky" class="login-error" hidden></div><label>MSSV hoặc MSGV<input name="code" placeholder="Ví dụ: 22110456" required></label><label>Họ và tên<input name="name" placeholder="Nguyễn Văn A" required></label><label>Email<input name="email" type="email" placeholder="sinhvien@university.edu.vn" required></label><label>Số điện thoại<input name="phone" placeholder="0901 234 567" required></label><label>Ngày sinh<input name="birth_date" type="date" required></label><label>Mật khẩu<input name="password" type="password" placeholder="Tối thiểu 8 ký tự" required></label><label>Xác nhận mật khẩu<input name="password_confirm" type="password" placeholder="Nhập lại mật khẩu" required></label><button class="primary login-submit" type="submit">Tạo tài khoản <span>→</span></button>
+                <div id="loi-dang-ky" class="login-error" hidden></div><label>MSSV hoặc MSGV<input name="code" placeholder="Ví dụ: 22110456" required></label><label>Họ và tên<input name="name" placeholder="Nguyễn Văn A" required></label><label>Email<input name="email" type="email" placeholder="sinhvien@university.edu.vn" required></label><label>Số điện thoại<input name="phone" placeholder="0901 234 567" required></label><label>Ngày sinh<input name="birth_date" type="date" required></label><label>Mật khẩu<input name="password" type="password" placeholder="Tối thiểu 8 ký tự" required></label><label>Xác nhận mật khẩu<input name="password_confirmation" type="password" placeholder="Nhập lại mật khẩu" required></label><button class="primary login-submit" type="submit">Tạo tài khoản <span>→</span></button>
                 <p class="login-footer">Đã có tài khoản? <a href="login.php">Đăng nhập</a></p>
             </form>
         </section>
@@ -46,15 +47,16 @@
         e.preventDefault();
         const f = e.currentTarget,
             loi = document.querySelector('#loi-dang-ky');
-        if (f.password.value !== f.password_confirm.value) {
+        if (f.password.value !== f.password_confirmation.value) {
             loi.textContent = 'Xác nhận mật khẩu chưa khớp.';
             loi.hidden = false;
             return
         }
         const r = await fetch('api/dangKy.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+                headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
             },
             body: JSON.stringify(Object.fromEntries(new FormData(f)))
         });

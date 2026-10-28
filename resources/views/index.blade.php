@@ -13,6 +13,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>LIBRA | Quản lý thư viện</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,7 +43,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
       </nav><?php endif; ?>
     <div class="sidebar-user">
       <div class="avatar"><?= htmlspecialchars($nguoiDungHienTai['initials']) ?></div>
-      <div><b><?= htmlspecialchars($nguoiDungHienTai['name']) ?></b><span><?= htmlspecialchars($nguoiDungHienTai['role_name']) ?></span></div><a class="logout" href="logout.php" title="Đăng xuất">⇥</a>
+      <div><b><?= htmlspecialchars($nguoiDungHienTai['name']) ?></b><span><?= htmlspecialchars($nguoiDungHienTai['role_name']) ?></span></div><form method="post" action="<?= route('logout') ?>" class="logout-form">@csrf<button class="logout" type="submit" title="Đăng xuất" aria-label="Đăng xuất">⇥</button></form>
     </div>
   </aside>
   <main>
@@ -465,7 +466,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
     </section>
   </div>
   <div id="hienThongBao" class="toast">Đã cập nhật thành công</div>
-  <script src="assets/app.js?v=20261002-2"></script>
+  <script src="assets/app.js?v=20261022-1"></script>
   <script src="assets/docGiaApi.js?v=20261010-1"></script>
   <script src="assets/quanTriApi.js?v=20261004-3"></script>
   <script src="assets/quanTriHeThong.js?v=20261003-5"></script>
