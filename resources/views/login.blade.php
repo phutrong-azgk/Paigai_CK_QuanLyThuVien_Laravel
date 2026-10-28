@@ -16,7 +16,8 @@
 
 <body class="login-body">
     <main class="login-wrap">
-        <section class="login-story"><a class="brand" href="login.php"><span class="brand-mark">L</span><span>LIBRA<small>THƯ VIỆN SỐ</small></span></a>
+        <section class="login-story"><a class="brand" href="login.php"><span
+                    class="brand-mark">L</span><span>LIBRA<small>THƯ VIỆN SỐ</small></span></a>
             <div class="story-copy">
                 <p class="eyebrow">TRUNG TÂM HỌC LIỆU</p>
                 <h1>Tri thức mở ra<br><em>mọi hành trình.</em></h1>
@@ -36,17 +37,25 @@
                 <h2>Đăng nhập hệ thống</h2>
                 <p class="form-intro">Sử dụng MSSV, MSGV hoặc tài khoản quản trị để tiếp tục.</p>
                 <div id="loi-dang-nhap" class="login-error" hidden></div>
-                <div id="tao-tai-khoan-thanh-cong" class="account-created" hidden>Tạo tài khoản thành công. Hãy đăng nhập bằng mã số và mật khẩu bạn vừa đặt.</div><label>Mã đăng nhập<input name="username" autocomplete="username" placeholder="Ví dụ: 22110456" required autofocus></label><label>Mật khẩu<div class="password-wrap"><input name="password" type="password" autocomplete="current-password" placeholder="Nhập mật khẩu" required><button type="button" id="toggle-password">◉</button></div></label>
-                <div class="login-options"><label class="remember"><input type="checkbox"> Ghi nhớ đăng nhập</label><a href="#">Quên mật khẩu?</a></div><button class="primary login-submit" type="submit">Đăng nhập <span>→</span></button>
+                <div id="tao-tai-khoan-thanh-cong" class="account-created" hidden>Tạo tài khoản thành công. Hãy đăng
+                    nhập bằng mã số và mật khẩu bạn vừa đặt.</div><label>Mã đăng nhập<input name="username"
+                        autocomplete="username" placeholder="Ví dụ: 22110456" required autofocus></label><label>Mật khẩu
+                    <div class="password-wrap"><input name="password" type="password" autocomplete="current-password"
+                            placeholder="Nhập mật khẩu" required><button type="button" id="toggle-password">◉</button>
+                    </div></label>
+                <div class="login-options"><label class="remember"><input type="checkbox"> Ghi nhớ đăng nhập</label><a
+                        href="#">Quên mật khẩu?</a></div><button class="primary login-submit" type="submit">Đăng
+                    nhập <span>→</span></button>
                 <p class="login-footer">Chưa có tài khoản? <a href="dangKy.php">Đăng ký độc giả</a></p>
-                @if(app()->environment('local'))
+                @if (app()->environment('local'))
                     <a href="dangNhapNhanh.php" class="login-quick">Đăng nhập nhanh</a>
                 @endif
             </form>
         </section>
     </main>
     <script>
-        if (new URLSearchParams(location.search).has('registered')) document.querySelector('#tao-tai-khoan-thanh-cong').hidden = false;
+        if (new URLSearchParams(location.search).has('registered')) document.querySelector('#tao-tai-khoan-thanh-cong')
+            .hidden = false;
         document.querySelector('#form-dang-nhap').onsubmit = async e => {
             e.preventDefault();
             const f = e.currentTarget,

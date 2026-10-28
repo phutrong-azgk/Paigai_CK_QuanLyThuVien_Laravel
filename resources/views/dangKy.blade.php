@@ -16,11 +16,13 @@
 
 <body class="login-body">
     <main class="login-wrap">
-        <section class="login-story"><a class="brand" href="login.php"><span class="brand-mark">L</span><span>LIBRA<small>THƯ VIỆN SỐ</small></span></a>
+        <section class="login-story"><a class="brand" href="login.php"><span
+                    class="brand-mark">L</span><span>LIBRA<small>THƯ VIỆN SỐ</small></span></a>
             <div class="story-copy">
                 <p class="eyebrow">ĐĂNG KÝ ĐỘC GIẢ</p>
                 <h1>Bắt đầu hành trình<br><em>cùng tri thức.</em></h1>
-                <p>MSSV hoặc MSGV của bạn sẽ là tên đăng nhập. Bạn tự thiết lập mật khẩu để bảo vệ tài khoản của mình.</p>
+                <p>MSSV hoặc MSGV của bạn sẽ là tên đăng nhập. Bạn tự thiết lập mật khẩu để bảo vệ tài khoản của mình.
+                </p>
             </div>
             <div class="login-art">
                 <div class="sun"></div>
@@ -35,7 +37,16 @@
                 <p class="eyebrow">TẠO TÀI KHOẢN</p>
                 <h2>Đăng ký độc giả</h2>
                 <p class="form-intro">Điền thông tin hồ sơ để tạo thẻ thư viện trực tuyến.</p>
-                <div id="loi-dang-ky" class="login-error" hidden></div><label>MSSV hoặc MSGV<input name="code" placeholder="Ví dụ: 22110456" required></label><label>Họ và tên<input name="name" placeholder="Nguyễn Văn A" required></label><label>Email<input name="email" type="email" placeholder="sinhvien@university.edu.vn" required></label><label>Số điện thoại<input name="phone" placeholder="0901 234 567" required></label><label>Ngày sinh<input name="birth_date" type="date" required></label><label>Mật khẩu<input name="password" type="password" placeholder="Tối thiểu 8 ký tự" required></label><label>Xác nhận mật khẩu<input name="password_confirmation" type="password" placeholder="Nhập lại mật khẩu" required></label><button class="primary login-submit" type="submit">Tạo tài khoản <span>→</span></button>
+                <div id="loi-dang-ky" class="login-error" hidden></div><label>MSSV hoặc MSGV<input name="code"
+                        placeholder="Ví dụ: 22110456" required></label><label>Họ và tên<input name="name"
+                        placeholder="Nguyễn Văn A" required></label><label>Email<input name="email" type="email"
+                        placeholder="sinhvien@university.edu.vn" required></label><label>Số điện thoại<input
+                        name="phone" placeholder="0901 234 567" required></label><label>Ngày sinh<input
+                        name="birth_date" type="date" required></label><label>Mật khẩu<input name="password"
+                        type="password" placeholder="Tối thiểu 8 ký tự" required></label><label>Xác nhận mật khẩu<input
+                        name="password_confirmation" type="password" placeholder="Nhập lại mật khẩu"
+                        required></label><button class="primary login-submit" type="submit">Tạo tài khoản
+                    <span>→</span></button>
                 <p class="login-footer">Đã có tài khoản? <a href="login.php">Đăng nhập</a></p>
             </form>
         </section>
@@ -54,7 +65,7 @@
         }
         const r = await fetch('api/dangKy.php', {
             method: 'POST',
-                headers: {
+            headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
             },

@@ -9,7 +9,10 @@ if (csrfToken) {
         if (!['GET', 'HEAD', 'OPTIONS'].includes(phuongThuc)) {
             const headers = new Headers(tuyChon.headers || (taiNguyen instanceof Request ? taiNguyen.headers : undefined));
             headers.set('X-CSRF-TOKEN', csrfToken);
-            tuyChon = {...tuyChon, headers};
+            tuyChon = {
+                ...tuyChon,
+                headers
+            };
         }
         return fetchGoc(taiNguyen, tuyChon);
     };
