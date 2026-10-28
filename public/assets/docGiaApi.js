@@ -155,6 +155,20 @@
       return `<tr><td><b>${anToan(x.tieuDe)}</b><span>${anToan(x.ma)}</span></td><td>${dinhDangNgay(x.ngayHoatDong)}</td><td>${dinhDangNgay(x.ngayTra) || '—'}</td><td><mark class="${biTuChoi ? 'red-mark' : 'green-mark'}">${biTuChoi ? 'Từ chối' : 'Đã trả'}</mark></td><td>${anToan(ghiChu)}</td></tr>`;
     }).join('') || '<tr><td colspan="5">Chưa có lịch sử hoạt động mượn.</td></tr>';
   };
+  const napPhieuPhat = async () => {
+    const tbody = document.querySelector('#du-lieu-phieu-phat');
+    if (!tbody) return;
+    const ds = await goiApi('api/docGia.php?hanhDong=phieuPhat');
+    const loaiPhat = {
+      quaHan: 'Trả quá hạn',
+      huHongNhe: 'Hư hỏng nhẹ',
+      huHongNang: 'Hư hỏng nặng'
+    };
+    tbody.innerHTML = ds.map(phat => {
+      const chuaThanhToan = phat.trangThai === 'chuaThanhToan';
+      return `<tr><td><b>${anToan(phat.tieuDe || 'Không xác định tài liệu')}</b><span>${anToan(phat.ma || '—')}</span></td><td>${anToan(loaiPhat[phat.loaiPhat] || phat.loaiPhat || '—')}</td><td><b>${Math.round(Number(phat.soTien || 0)).toLocaleString('vi-VN')}đ</b></td><td>${dinhDangNgay(phat.ngayLap) || '—'}</td><td><mark class="${chuaThanhToan ? 'red-mark' : 'green-mark'}">${chuaThanhToan ? 'Chưa thanh toán' : 'Đã thanh toán'}</mark></td><td>${phat.ngayThanhToan ? dinhDangNgay(phat.ngayThanhToan) : '—'}</td></tr>`;
+    }).join('') || '<tr><td colspan="6">Bạn không có khoản phạt nào.</td></tr>';
+  };
   const napYeuCau = async () => {
     const khung = document.querySelector('#du-lieu-yeu-cau-muon');
     if (!khung) return;
@@ -181,5 +195,5 @@
       napYeuCau();
     });
   };
-  Promise.all([napTongQuan(), napTaiLieu(), napMuon(), napLichSu(), napYeuCau(), napHoSo()]).catch(loi => console.warn(loi.message));
+  Promise.all([napTongQuan(), napTaiLieu(), napMuon(), napLichSu(), napPhieuPhat(), napYeuCau(), napHoSo()]).catch(loi => console.warn(loi.message));
 })();

@@ -356,8 +356,8 @@ class ThuThuController extends Controller
                     $mucPhat = DB::table('chinhsachmuon')->where('maChinhSach', $muc->maChinhSach)->first();
 
                     // Qua han
-                    $hanTraDate = \Carbon\Carbon::parse($muc->hanTra);
-                    $ngayQuaHan = max(0, now()->diffInDays($hanTraDate, false) < 0 ? abs(now()->diffInDays($hanTraDate, false)) : 0);
+                    $hanTraDate = \Carbon\Carbon::parse($muc->hanTra)->startOfDay();
+                    $ngayQuaHan = max(0, (int)$hanTraDate->diffInDays(now()->startOfDay(), false));
                     $soTienQuaHan = $ngayQuaHan * (float)($mucPhat->tienPhatMoiNgay ?? 0);
 
                     if ($soTienQuaHan > 0) {

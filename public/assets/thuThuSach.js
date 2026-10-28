@@ -64,7 +64,7 @@
   };
   const veSach = () => {
     if (!bangSach) return;
-    bangSach.innerHTML = danhSachSach.map(sach => `<tr><td><div class="table-book">${sach.anhBia ? `<img src="${anToan(sach.anhBia)}" alt="">` : '<i class="blue">▣</i>'}<div><b>${anToan(sach.tieuDe)}</b><span>${anToan(sach.nhaXuatBan || 'Chưa có nhà xuất bản')}</span></div></div></td><td>${anToan(sach.ma)}</td><td>${anToan(sach.khoa || '')}</td><td>${sach.soBanSanSang} / ${sach.tongBan} bản</td><td><mark class="${sach.soBanSanSang ? 'green-mark' : 'red-mark'}">${sach.soBanSanSang ? 'Sẵn sàng' : 'Hết sách'}</mark></td><td><button class="table-action edit-sach" data-id="${sach.maTaiLieu}">Sửa</button><button class="table-action xoa-sach" data-id="${sach.maTaiLieu}">Xóa</button></td></tr>`).join('') || '<tr><td colspan="6">Chưa có tài liệu.</td></tr>';
+    bangSach.innerHTML = danhSachSach.map(sach => `<tr><td><div class="table-book">${sach.anhBia ? `<img src="${anToan(sach.anhBia)}" alt="">` : '<i class="blue">▣</i>'}<div><b>${anToan(sach.tieuDe)}</b><span>${anToan(sach.nhaXuatBan || 'Chưa có nhà xuất bản')} · ${anToan(sach.viTriKe || 'Chưa cập nhật vị trí')}</span></div></div></td><td>${anToan(sach.ma)}</td><td>${anToan(sach.khoa || '')}</td><td>${sach.soBanSanSang} / ${sach.tongBan} bản</td><td><mark class="${sach.soBanSanSang ? 'green-mark' : 'red-mark'}">${sach.soBanSanSang ? 'Sẵn sàng' : 'Hết sách'}</mark></td><td><button class="table-action edit-sach" data-id="${sach.maTaiLieu}">Sửa</button><button class="table-action xoa-sach" data-id="${sach.maTaiLieu}">Xóa</button></td></tr>`).join('') || '<tr><td colspan="6">Chưa có tài liệu.</td></tr>';
   };
   const veDanhSachTomTat = () => {
     if (!formTomTat) return;
@@ -144,6 +144,10 @@
     formSach.maNhaXuatBan.value = sach.maNhaXuatBan || '';
     formSach.namXuatBan.value = sach.namXuatBan || '';
     formSach.maIsbn.value = sach.maIsbn || '';
+    const viTri = /^Kệ ([A-Z]{1,2}) · Tầng (\d+) · Ngăn (\d+)$/.exec(sach.viTriKe || '');
+    formSach.keSach.value = viTri?.[1] || '';
+    formSach.tangKe.value = viTri?.[2] || '';
+    formSach.nganKe.value = viTri?.[3] ? String(Number(viTri[3])) : '';
     formSach.anhBiaHienTai.value = sach.anhBia || '';
     formSach.soLuongTong.value = sach.tongBan || 0;
     document.querySelector('#loi-form-sach').hidden = true;

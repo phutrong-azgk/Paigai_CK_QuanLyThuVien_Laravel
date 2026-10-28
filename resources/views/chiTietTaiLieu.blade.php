@@ -36,6 +36,7 @@ $laDocGia = (session('role') === 'reader');
           <div><dt>Mã tài liệu</dt><dd id="thong-tin-ma">—</dd></div>
           <div><dt>Nhà xuất bản</dt><dd id="thong-tin-nxb">—</dd></div>
           <div><dt>Năm xuất bản</dt><dd id="thong-tin-nam">—</dd></div>
+          <div><dt>Vị trí kệ</dt><dd id="thong-tin-vi-tri-ke">—</dd></div>
         </dl>
       </article>
       <article class="detail-panel">
@@ -77,6 +78,7 @@ $laDocGia = (session('role') === 'reader');
         document.querySelector('#thong-tin-ma').textContent = taiLieu.ma;
         document.querySelector('#thong-tin-nxb').textContent = taiLieu.nhaXuatBan || '—';
         document.querySelector('#thong-tin-nam').textContent = taiLieu.namXuatBan || '—';
+        document.querySelector('#thong-tin-vi-tri-ke').textContent = taiLieu.viTriKe || 'Chưa cập nhật';
         const bia = document.querySelector('#bia-tai-lieu');
         if (taiLieu.anhBia) {
           bia.classList.add('co-anh');

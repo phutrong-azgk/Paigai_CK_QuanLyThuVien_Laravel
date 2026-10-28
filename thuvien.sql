@@ -269,6 +269,7 @@ CREATE TABLE IF NOT EXISTS `tailieu` (
   `maNhaXuatBan` int DEFAULT NULL,
   `tieuDe` varchar(500) DEFAULT NULL,
   `maIsbn` varchar(30) DEFAULT NULL,
+  `viTriKe` varchar(100) DEFAULT NULL,
   `loaiTaiLieu` varchar(50) DEFAULT NULL,
   `namXuatBan` int DEFAULT NULL,
   `anhBia` varchar(255) DEFAULT NULL,

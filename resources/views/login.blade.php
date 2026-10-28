@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/login.css">
-    <link rel="stylesheet" href="assets/login-layout.css">
+    <link rel="stylesheet" href="assets/style.css?v=20261028-1">
+    <link rel="stylesheet" href="assets/login.css?v=20261028-1">
+    <link rel="stylesheet" href="assets/login-layout.css?v=20261028-1">
 </head>
 
 <body class="login-body">

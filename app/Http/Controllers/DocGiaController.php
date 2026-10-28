@@ -210,6 +210,18 @@ class DocGiaController extends Controller
             return response()->json(['duLieu' => $duLieu]);
         }
 
+        if ($hanhDong === 'phieuPhat') {
+            $duLieu = DB::table('phieuphat as pp')
+                ->leftJoin('chitietphieumuon as ct', 'ct.maChiTietPhieuMuon', '=', 'pp.maChiTietPhieuMuon')
+                ->leftJoin('tailieu as tl', 'tl.maTaiLieu', '=', 'ct.maTaiLieu')
+                ->select('pp.maPhieuPhat', 'pp.loaiPhat', 'pp.soTien', 'pp.trangThai', 'pp.ngayLap', 'pp.ngayThanhToan', 'tl.ma', 'tl.tieuDe')
+                ->where('pp.maDocGia', $maDocGia)
+                ->orderByDesc('pp.ngayLap')
+                ->get();
+
+            return response()->json(['duLieu' => $duLieu]);
+        }
+
         if ($hanhDong === 'yeuCauMuon' && $request->isMethod('GET')) {
             $duLieu = DB::table('yeucaumuon as yc')
                 ->join('chitietyeucaumuon as ct', 'ct.maYeuCauMuon', '=', 'yc.maYeuCauMuon')

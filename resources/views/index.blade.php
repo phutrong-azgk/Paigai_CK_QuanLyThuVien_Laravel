@@ -33,7 +33,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
   <aside class="sidebar">
     <a class="brand" href="#"><span class="brand-mark">L</span><span>LIBRA<small>THƯ VIỆN SỐ</small></span></a>
     <?php if ($vaiTroHienTai === 'reader'): ?><nav id="reader-nav" class="nav-group">
-        <p>KHÔNG GIAN ĐỘC GIẢ</p><a class="nav-link active" href="#dashboard" data-page="dashboard"><i>⌂</i> Tổng quan</a><a class="nav-link" href="#catalog" data-page="catalog"><i>⌕</i> Tìm kiếm sách</a><a class="nav-link" href="#loans" data-page="loans"><i>▣</i> Mượn & trả sách</a><a class="nav-link" href="#history" data-page="history"><i>◷</i> Lịch sử hoạt động</a><a class="nav-link" href="#reader-pending" data-page="reader-pending"><i>◌</i> Yêu cầu chờ duyệt</a><a class="nav-link" href="#profile" data-page="profile"><i>♙</i> Hồ sơ cá nhân</a>
+        <p>KHÔNG GIAN ĐỘC GIẢ</p><a class="nav-link active" href="#dashboard" data-page="dashboard"><i>⌂</i> Tổng quan</a><a class="nav-link" href="#catalog" data-page="catalog"><i>⌕</i> Tìm kiếm sách</a><a class="nav-link" href="#loans" data-page="loans"><i>▣</i> Mượn & trả sách</a><a class="nav-link" href="#history" data-page="history"><i>◷</i> Lịch sử hoạt động</a><a class="nav-link" href="#reader-fines" data-page="reader-fines"><i>₫</i> Khoản phạt</a><a class="nav-link" href="#reader-pending" data-page="reader-pending"><i>◌</i> Yêu cầu chờ duyệt</a><a class="nav-link" href="#profile" data-page="profile"><i>♙</i> Hồ sơ cá nhân</a>
       </nav><?php endif; ?>
     <?php if ($vaiTroHienTai === 'librarian'): ?><nav id="staff-nav" class="nav-group">
         <p>QUẢN LÝ NGHIỆP VỤ</p><a class="nav-link active" href="#staff-dashboard" data-page="staff-dashboard"><i>⌂</i> Tổng quan</a><a class="nav-link" href="#book-admin" data-page="book-admin"><i>▤</i> Quản lý sách</a><a class="nav-link" href="#publishers" data-page="publishers"><i>▦</i> Nhà xuất bản</a><a class="nav-link" href="#borrow-admin" data-page="borrow-admin"><i>↔</i> Quản lý mượn sách</a><a class="nav-link" href="#return-admin" data-page="return-admin"><i>↵</i> Quản lý trả sách</a><a class="nav-link" href="#reader-admin" data-page="reader-admin"><i>♙</i> Hồ sơ độc giả</a><a class="nav-link" href="#renewal-admin" data-page="renewal-admin"><i>◷</i> Yêu cầu gia hạn</a><a class="nav-link" href="#fines" data-page="fines"><i>₫</i> Quản lý phạt</a>
@@ -183,6 +183,29 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
                 <td><mark class="red-mark">Từ chối</mark></td>
                 <td>Không đủ số bản sẵn sàng.</td>
               </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+      <section id="reader-fines" class="page">
+        <div class="page-heading">
+          <h1>Khoản phạt</h1>
+          <p>Các khoản chưa thanh toán sẽ tạm thời hạn chế việc đăng ký mượn tài liệu.</p>
+        </div>
+        <section class="panel table-panel">
+          <table>
+            <thead>
+              <tr>
+                <th>TÀI LIỆU</th>
+                <th>LÝ DO</th>
+                <th>SỐ TIỀN</th>
+                <th>NGÀY LẬP</th>
+                <th>TRẠNG THÁI</th>
+                <th>NGÀY THANH TOÁN</th>
+              </tr>
+            </thead>
+            <tbody id="du-lieu-phieu-phat">
+              <tr><td colspan="6">Đang tải khoản phạt...</td></tr>
             </tbody>
           </table>
         </section>
@@ -446,6 +469,9 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
           <label>Năm xuất bản<input name="namXuatBan" type="number" min="1900"></label>
           <label>Số lượng tổng<input name="soLuongTong" type="number" min="0" value="1" required></label>
           <label class="rong">ISBN<input name="maIsbn"></label>
+          <label>Vị trí kệ<select name="keSach" required><option value="">Chọn kệ</option><option value="A">Kệ A</option><option value="B">Kệ B</option><option value="C">Kệ C</option><option value="D">Kệ D</option><option value="E">Kệ E</option><option value="F">Kệ F</option></select></label>
+          <label>Tầng<select name="tangKe" required><option value="">Chọn tầng</option><option value="1">Tầng 1</option><option value="2">Tầng 2</option><option value="3">Tầng 3</option><option value="4">Tầng 4</option><option value="5">Tầng 5</option></select></label>
+          <label>Ngăn<select name="nganKe" required><option value="">Chọn ngăn</option><option value="1">Ngăn 01</option><option value="2">Ngăn 02</option><option value="3">Ngăn 03</option><option value="4">Ngăn 04</option><option value="5">Ngăn 05</option><option value="6">Ngăn 06</option><option value="7">Ngăn 07</option><option value="8">Ngăn 08</option><option value="9">Ngăn 09</option><option value="10">Ngăn 10</option></select></label>
           <label class="rong">Ảnh bìa<input name="anhBia" type="file" accept="image/jpeg,image/png,image/webp"><small>Chọn ảnh JPG, PNG hoặc WEBP, tối đa 5 MB.</small></label>
         </div>
         <p id="loi-form-sach" class="loi-tai-khoan-quan-tri" hidden></p>
@@ -467,11 +493,11 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
   </div>
   <div id="hienThongBao" class="toast">Đã cập nhật thành công</div>
   <script src="assets/app.js?v=20261022-1"></script>
-  <script src="assets/docGiaApi.js?v=20261010-1"></script>
+  <script src="assets/docGiaApi.js?v=20261028-2"></script>
   <script src="assets/quanTriApi.js?v=20261004-3"></script>
   <script src="assets/quanTriHeThong.js?v=20261003-5"></script>
   <script src="assets/thuThuApi.js?v=20261010-2"></script>
-  <script src="assets/thuThuSach.js?v=20261002-4"></script>
+  <script src="assets/thuThuSach.js?v=20261028-1"></script>
   <script src="assets/thuThuSachThongKe.js?v=20261002-2"></script>
 </body>
 

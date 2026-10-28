@@ -59,7 +59,7 @@ class ThuThuSachController extends Controller
                 ->leftJoin('khoa as k', 'k.maKhoa', '=', 'tl.maKhoa')
                 ->leftJoin('nhaxuatban as nxb', 'nxb.maNhaXuatBan', '=', 'tl.maNhaXuatBan')
                 ->select(
-                    'tl.maTaiLieu', 'tl.ma', 'tl.tieuDe', 'tl.maIsbn', 'tl.namXuatBan', 'tl.anhBia', 'tl.tomTat',
+                    'tl.maTaiLieu', 'tl.ma', 'tl.tieuDe', 'tl.maIsbn', 'tl.viTriKe', 'tl.namXuatBan', 'tl.anhBia', 'tl.tomTat',
                     'tl.soLuongTong as tongBan', 'tl.soLuongCon as soBanSanSang', 'k.ten as khoa', 'nxb.maNhaXuatBan', 'nxb.ten as nhaXuatBan'
                 );
 
@@ -152,12 +152,17 @@ class ThuThuSachController extends Controller
             $maNhaXuatBan = (int)$request->input('maNhaXuatBan', 0);
             $namXuatBan = (int)$request->input('namXuatBan', 0);
             $maIsbn = trim($request->input('maIsbn', ''));
+            $keSach = strtoupper(trim($request->input('keSach', '')));
+            $tangKe = (int)$request->input('tangKe', 0);
+            $nganKe = (int)$request->input('nganKe', 0);
             $anhBia = trim($request->input('anhBiaHienTai', ''));
             $soLuongTong = (int)$request->input('soLuongTong', -1);
 
-            if (!preg_match('/^[A-Z0-9-]{3,30}$/', $ma) || mb_strlen($tieuDe) < 2 || !$maKhoa || !$maNhaXuatBan || $soLuongTong < 0) {
+            if (!preg_match('/^[A-Z0-9-]{3,30}$/', $ma) || mb_strlen($tieuDe) < 2 || !$maKhoa || !$maNhaXuatBan || !preg_match('/^[A-Z]{1,2}$/', $keSach) || $tangKe < 1 || $tangKe > 10 || $nganKe < 1 || $nganKe > 50 || $soLuongTong < 0) {
                 return response()->json(['loi' => 'Thông tin tài liệu, khoa hoặc nhà xuất bản chưa hợp lệ.'], 422);
             }
+
+            $viTriKe = "Kệ $keSach · Tầng $tangKe · Ngăn " . str_pad((string)$nganKe, 2, '0', STR_PAD_LEFT);
 
             if ($request->hasFile('anhBia')) {
                 $file = $request->file('anhBia');
@@ -185,6 +190,7 @@ class ThuThuSachController extends Controller
                         'maNhaXuatBan' => $maNhaXuatBan,
                         'tieuDe' => $tieuDe,
                         'maIsbn' => $maIsbn ?: null,
+                        'viTriKe' => $viTriKe,
                         'namXuatBan' => $namXuatBan ?: null,
                         'anhBia' => $anhBia ?: null,
                         'soLuongTong' => $soLuongTong,
@@ -197,6 +203,7 @@ class ThuThuSachController extends Controller
                         'maNhaXuatBan' => $maNhaXuatBan,
                         'tieuDe' => $tieuDe,
                         'maIsbn' => $maIsbn ?: null,
+                        'viTriKe' => $viTriKe,
                         'namXuatBan' => $namXuatBan ?: null,
                         'anhBia' => $anhBia ?: null,
                         'duocMuon' => 'co',
