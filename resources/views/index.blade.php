@@ -693,7 +693,7 @@ $danhSachTaiLieu = $danhSachTaiLieu ?? [];
     <script src="assets/docGiaApi.js?v=20261028-2"></script>
     <script src="assets/quanTriApi.js?v=20261004-3"></script>
     <script src="assets/quanTriHeThong.js?v=20261003-5"></script>
-    <script src="assets/thuThuApi.js?v=20261010-2"></script>
+  <script src="assets/thuThuApi.js?v=20261028-1"></script>
     <script src="assets/thuThuSach.js?v=20261028-1"></script>
     <script src="assets/thuThuSachThongKe.js?v=20261002-2"></script>
 </body>

@@ -238,8 +238,16 @@
     }
     const r = document.querySelector('#du-lieu-doc-gia-thu-thu');
     if (r) {
-        const taiDocGia = () => g(`api/thuThu.php?hanhDong=docGia&thoiGian=${Date.now()}`, {cache: 'no-store'}).then(d => r.innerHTML = d.duLieu.map(x => '<tr><td><b>' + a(x.hoTen) + '</b><span>' + a(x.thuDienTu) + '</span></td><td>' + a(x.maSo) + '</td><td>' + a(x.khoa || '') + '</td><td>' + x.dangMuon + '</td><td>' + Number(x.tienPhat).toLocaleString('vi-VN') + 'đ</td><td><mark class="' + (x.trangThaiThe === 'hoatDong' ? 'green-mark' : 'red-mark') + '">' + (x.trangThaiThe === 'hoatDong' ? 'Hoạt động' : 'Tạm khóa') + '</mark></td><td><button class="table-action cap-nhat-the" data-id="' + x.maDocGia + '" data-trang-thai="' + x.trangThaiThe + '">' + (x.trangThaiThe === 'hoatDong' ? 'Tạm khóa thẻ' : 'Mở khóa thẻ') + '</button></td></tr>').join('') || '<tr><td colspan="7">Chưa có độc giả.</td></tr>');
+        const oTimDocGia = document.querySelector('#tim-doc-gia-thu-thu');
+        let danhSachDocGia = [];
+        const veDocGia = () => {
+            const tuKhoa = (oTimDocGia?.value || '').trim().toLocaleLowerCase('vi');
+            const ketQua = danhSachDocGia.filter(x => !tuKhoa || `${x.hoTen} ${x.maSo} ${x.thuDienTu || ''} ${x.khoa || ''}`.toLocaleLowerCase('vi').includes(tuKhoa));
+            r.innerHTML = ketQua.map(x => '<tr><td><b>' + a(x.hoTen) + '</b><span>' + a(x.thuDienTu) + '</span></td><td>' + a(x.maSo) + '</td><td>' + a(x.khoa || '') + '</td><td>' + x.dangMuon + '</td><td>' + Number(x.tienPhat).toLocaleString('vi-VN') + 'đ</td><td><mark class="' + (x.trangThaiThe === 'hoatDong' ? 'green-mark' : 'red-mark') + '">' + (x.trangThaiThe === 'hoatDong' ? 'Hoạt động' : 'Tạm khóa') + '</mark></td><td><button class="table-action cap-nhat-the" data-id="' + x.maDocGia + '" data-trang-thai="' + x.trangThaiThe + '">' + (x.trangThaiThe === 'hoatDong' ? 'Tạm khóa thẻ' : 'Mở khóa thẻ') + '</button></td></tr>').join('') || '<tr><td colspan="7">Không tìm thấy độc giả phù hợp.</td></tr>';
+        };
+        const taiDocGia = () => g(`api/thuThu.php?hanhDong=docGia&thoiGian=${Date.now()}`, {cache: 'no-store'}).then(d => { danhSachDocGia = d.duLieu; veDocGia(); });
         r.onclick = async e => { const nut = e.target.closest('.cap-nhat-the'); if (!nut) return; try { await p('capNhatThe', {maDocGia: nut.dataset.id, trangThaiThe: nut.dataset.trangThai === 'hoatDong' ? 'tamKhoa' : 'hoatDong'}); await taiDocGia(); window.hienThongBao?.('Đã cập nhật trạng thái thẻ.'); } catch (loi) { alert(loi.message); } };
+        oTimDocGia?.addEventListener('input', veDocGia);
         document.querySelectorAll('[data-page="reader-admin"]').forEach(nut => nut.addEventListener('click', taiDocGia));
         taiDocGia();
     }
@@ -259,13 +267,20 @@
     const anToan = giaTri => String(giaTri ?? '').replace(/[&<>]/g, kyTu => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[kyTu]));
     const nhanLoaiPhat = { quaHan: 'Quá hạn', huHongNhe: 'Hư hỏng nhẹ', huHongNang: 'Hư hỏng nặng' };
     const nhanTrangThai = { chuaThanhToan: 'Chưa thanh toán', daThanhToan: 'Đã thanh toán' };
+    const oTimPhat = document.querySelector('#tim-phat-thu-thu');
+    let danhSachPhat = [];
+    const vePhat = () => {
+        const tuKhoa = (oTimPhat?.value || '').trim().toLocaleLowerCase('vi');
+        const ketQua = danhSachPhat.filter(phat => !tuKhoa || `VP-${phat.maPhieuPhat} ${phat.hoTen} ${phat.maSo} ${nhanLoaiPhat[phat.loaiPhat] || phat.loaiPhat}`.toLocaleLowerCase('vi').includes(tuKhoa));
+        bang.innerHTML = ketQua.map(phat => `<tr><td>VP-${anToan(phat.maPhieuPhat)}</td><td><b>${anToan(phat.hoTen)}</b><span>${anToan(phat.maSo)}</span></td><td>${anToan(nhanLoaiPhat[phat.loaiPhat] || phat.loaiPhat)}</td><td>${Number(phat.soTien || 0).toLocaleString('vi-VN')}đ</td><td>${anToan(phat.ngayLap)}</td><td>${anToan(nhanTrangThai[phat.trangThai] || phat.trangThai)}</td><td>${phat.trangThai === 'chuaThanhToan' ? `<button class="table-action thu-phat" data-id="${anToan(phat.maPhieuPhat)}">Thu tiền</button>` : ''}</td></tr>`).join('') || '<tr><td colspan="7">Không tìm thấy phiếu phạt phù hợp.</td></tr>';
+    };
     const layPhat = async () => {
         try {
             const phanHoi = await fetch(`api/thuThu.php?hanhDong=phat&thoiGian=${Date.now()}`, {cache: 'no-store'});
             const duLieu = await phanHoi.json();
             if (!phanHoi.ok) throw Error(duLieu.loi || 'Không thể tải danh sách phạt.');
-            const danhSach = duLieu.duLieu || [];
-            bang.innerHTML = danhSach.map(phat => `<tr><td>VP-${anToan(phat.maPhieuPhat)}</td><td><b>${anToan(phat.hoTen)}</b><span>${anToan(phat.maSo)}</span></td><td>${anToan(nhanLoaiPhat[phat.loaiPhat] || phat.loaiPhat)}</td><td>${Number(phat.soTien || 0).toLocaleString('vi-VN')}đ</td><td>${anToan(phat.ngayLap)}</td><td>${anToan(nhanTrangThai[phat.trangThai] || phat.trangThai)}</td><td>${phat.trangThai === 'chuaThanhToan' ? `<button class="table-action thu-phat" data-id="${anToan(phat.maPhieuPhat)}">Thu tiền</button>` : ''}</td></tr>`).join('') || '<tr><td colspan="7">Chưa có phiếu phạt.</td></tr>';
+            danhSachPhat = duLieu.duLieu || [];
+            vePhat();
         } catch (loi) {
             bang.innerHTML = `<tr><td colspan="7">${anToan(loi.message)}</td></tr>`;
         }
@@ -283,6 +298,7 @@
             alert(loi.message);
         }
     });
+    oTimPhat?.addEventListener('input', vePhat);
     document.querySelectorAll('[data-page="fines"]').forEach(nut => nut.addEventListener('click', layPhat));
     layPhat();
 })();
